@@ -29,18 +29,44 @@ og_man/           →    sexy_md/           →    sexy_html/
 - Cross-reference linking
 - Mobile-responsive HTML output
 
-## Usage
+## Complete Workflow
+
+### Adding a New Manual
 
 ```bash
-# Steal a manual page directly from man
-man ssh | fip
-fop > og_man/ssh.md
+# 1. Steal a manual page directly from man
+man git | fip
+fop > og_man/git.md
 
-# Format to sexy markdown
+# 2. Format to sexy markdown
 python3 sexy_formatter.py
 
-# Generate HTML (optional)
-cd public && ./main.sh
+# 3. Add to website (automated)
+python3 add_manual.py git
+
+# 4. Deploy to GitHub Pages
+git add docs/ && git commit -m "Add git manual" && git push
+```
+
+### Manual Steps (if automation fails)
+
+```bash
+# If add_manual.py doesn't work, do this manually:
+
+# 1-2. Same as above (steal and format)
+
+# 3. Create simple version for site
+cp sexy_md/sexy_git.md public/content/git.md
+# Edit git.md to remove complex formatting
+
+# 4. Update homepage
+# Edit public/content/index.md to add link
+
+# 5. Generate HTML
+cd public && python3 src/main.py
+
+# 6. Deploy
+git add docs/ && git commit -m "Add git manual" && git push
 ```
 
 ---

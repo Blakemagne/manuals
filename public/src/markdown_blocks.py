@@ -12,6 +12,7 @@ class BlockType(Enum):
     QUOTE = "quite"
     OLIST = "ordered_list"
     ULIST = "unordered_list"
+    RULE = "horizontal_rule"
 
 
 def markdown_to_blocks(markdown):
@@ -27,7 +28,12 @@ def markdown_to_blocks(markdown):
 
 def block_to_block_type(block):
     lines = block.split("\n")
+    block_stripped = block.strip()
 
+    # Check for horizontal rules (---, ***, ___)
+    if block_stripped in ["---", "***", "___"] or (len(block_stripped) >= 3 and all(c in "-*_" for c in block_stripped) and len(set(block_stripped)) == 1):
+        return BlockType.RULE
+        
     if block.startswith(("# ", "## ", "### ", "#### ", "##### ", "###### ")):
         return BlockType.HEADING
     if len(lines) > 1 and lines[0].startswith("```") and lines[-1].startswith("```"):
@@ -75,6 +81,8 @@ def block_to_html_node(block):
         return ulist_to_html_node(block)
     if block_type == BlockType.QUOTE:
         return quote_to_html_node(block)
+    if block_type == BlockType.RULE:
+        return rule_to_html_node(block)
     raise ValueError("invalid block type")
 
 
@@ -95,6 +103,7 @@ def paragraph_to_html_node(block):
 
 
 def heading_to_html_node(block):
+    import re
     level = 0
     for char in block:
         if char == "#":
@@ -103,9 +112,18 @@ def heading_to_html_node(block):
             break
     if level + 1 >= len(block):
         raise ValueError(f"invalid heading level: {level}")
-    text = block[level + 1 :]
+    text = block[level + 1 :].strip()
+    
+    # Extract anchor if present (e.g., "Title {#anchor}")
+    anchor_match = re.search(r'\{#([^}]+)\}', text)
+    props = None
+    if anchor_match:
+        anchor = anchor_match.group(1)
+        text = re.sub(r'\s*\{#[^}]+\}', '', text)  # Remove anchor from text
+        props = {"id": anchor}
+    
     children = text_to_children(text)
-    return ParentNode(f"h{level}", children)
+    return ParentNode(f"h{level}", children, props)
 
 
 def code_to_html_node(block):
@@ -148,3 +166,9 @@ def quote_to_html_node(block):
     content = " ".join(new_lines)
     children = text_to_children(content)
     return ParentNode("blockquote", children)
+
+
+def rule_to_html_node(block):
+    """Convert horizontal rule markdown to HTML hr tag"""
+    from htmlnode import LeafNode
+    return LeafNode("hr", "", None)
