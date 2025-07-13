@@ -1,0 +1,1059 @@
+# 📚 LOGGER Manual
+
+> *Beautiful, readable documentation for command-line tools*
+
+---
+
+[LOGGER(1)](LOGGER.html)                                                                                      User Commands                                                                                      [LOGGER(1)](LOGGER.html)
+
+
+## 📑 Table of Contents
+
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Environment](#environment)
+- [Files](#files)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Exit Codes](#exit-codes)
+- [See Also](#see-also)
+- [Examples](#examples)
+- [Authors](#authors)
+  - [Copyright](#copyright)
+  - [Notes](#notes)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Interactive Commands](#interactive-commands)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Examples](#examples)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+- [Files](#files)
+  - [Exit Values](#exit-values)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Compatibility](#compatibility)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+  - [Configuration](#configuration)
+- [Files](#files)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Default Key Bindings](#default-key-bindings)
+  - [Command Parsing And Execution](#command-parsing-and-execution)
+  - [Parsing Syntax](#parsing-syntax)
+  - [Commands](#commands)
+  - [Clients And Sessions](#clients-and-sessions)
+  - [Windows And Panes](#windows-and-panes)
+  - [Key Bindings](#key-bindings)
+- [Options](#options)
+  - [Hooks](#hooks)
+  - [Mouse Support](#mouse-support)
+  - [Formats](#formats)
+  - [Styles](#styles)
+  - [Names And Titles](#names-and-titles)
+  - [Global And Session Environment](#global-and-session-environment)
+  - [Status Line](#status-line)
+  - [Buffers](#buffers)
+  - [Miscellaneous](#miscellaneous)
+  - [Exit Messages](#exit-messages)
+  - [Terminfo Extensions](#terminfo-extensions)
+  - [Control Mode](#control-mode)
+- [Environment](#environment)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Commands](#commands)
+  - [Display Names](#display-names)
+  - [Example](#example)
+- [Environment](#environment)
+- [Files](#files)
+- [See Also](#see-also)
+  - [Bugs](#bugs)
+  - [Author](#author)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Examples](#examples)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [String1 = String2](#string1-=-string2)
+  - [String1 != String2](#string1-!=-string2)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Description](#description)
+- [Files](#files)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [See Also](#see-also)
+  - [Author](#author)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+- [Environment](#environment)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Caveats](#caveats)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Description](#description)
+- [Files](#files)
+  - [Standards](#standards)
+  - [Posix.2.](#posix.2.)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Advanced Usage](#advanced-usage)
+- [Environment](#environment)
+- [See Also](#see-also)
+  - [Diagnostics](#diagnostics)
+  - [Caveats](#caveats)
+  - [Bugs](#bugs)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright Notice](#copyright-notice)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, 4.2Bsd.](#posix.1-2001,-4.2bsd.)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Examples](#examples)
+- [See Also](#see-also)
+  - [Standards](#standards)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, Posix.2.](#posix.1-2001,-posix.2.)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Note](#note)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [* [-]Lcase](#*-[-]lcase)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Portability](#portability)
+- [Authors](#authors)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Files](#files)
+- [Authors](#authors)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Environment](#environment)
+- [Files](#files)
+  - [Portability](#portability)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Fionread](#fionread)
+  - [Tiocinq](#tiocinq)
+  - [Tiocoutq](#tiocoutq)
+  - [Tiocsti](#tiocsti)
+  - [Tioccons](#tioccons)
+  - [Tiocsctty](#tiocsctty)
+  - [Tiocnotty](#tiocnotty)
+  - [Tiocgpgrp](#tiocgpgrp)
+  - [Tiocspgrp](#tiocspgrp)
+  - [Tiocgsid](#tiocgsid)
+  - [Tiocexcl](#tiocexcl)
+  - [Tiocgexcl](#tiocgexcl)
+  - [Tiocnxcl](#tiocnxcl)
+  - [Tiocgetd](#tiocgetd)
+  - [Tiocsetd](#tiocsetd)
+  - [Tiocpkt](#tiocpkt)
+  - [Tiocgpkt](#tiocgpkt)
+  - [Tiocsptlck](#tiocsptlck)
+  - [Tiocgptlck](#tiocgptlck)
+  - [Tiocgptpeer](#tiocgptpeer)
+  - [Tiocmget](#tiocmget)
+  - [Tiocmset](#tiocmset)
+  - [Tiocmbic](#tiocmbic)
+  - [Tiocmbis](#tiocmbis)
+  - [Tiocgsoftcar](#tiocgsoftcar)
+  - [Tiocssoftcar](#tiocssoftcar)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [C11, Posix.1-2008.](#c11,-posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, C89.](#posix.1-2001,-c89.)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001.](#posix.1-2001.)
+  - [Caveats](#caveats)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001.](#posix.1-2001.)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [C11, Posix.1-2008.](#c11,-posix.1-2008.)
+  - [History](#history)
+  - [Caveats](#caveats)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Files](#files)
+- [See Also](#see-also)
+  - [History](#history)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Default Key Bindings](#default-key-bindings)
+  - [Command Parsing And Execution](#command-parsing-and-execution)
+  - [Parsing Syntax](#parsing-syntax)
+  - [Commands](#commands)
+  - [Clients And Sessions](#clients-and-sessions)
+  - [Windows And Panes](#windows-and-panes)
+  - [Key Bindings](#key-bindings)
+- [Options](#options)
+  - [Hooks](#hooks)
+  - [Mouse Support](#mouse-support)
+  - [Formats](#formats)
+  - [Styles](#styles)
+  - [Names And Titles](#names-and-titles)
+  - [Global And Session Environment](#global-and-session-environment)
+  - [Status Line](#status-line)
+  - [Buffers](#buffers)
+  - [Miscellaneous](#miscellaneous)
+  - [Exit Messages](#exit-messages)
+  - [Terminfo Extensions](#terminfo-extensions)
+  - [Control Mode](#control-mode)
+- [Environment](#environment)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+  - [Configuration](#configuration)
+- [Files](#files)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Environment](#environment)
+- [Files](#files)
+  - [Exit Status](#exit-status)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+- [Files](#files)
+  - [Exit Values](#exit-values)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Moduli Generation](#moduli-generation)
+  - [Certificates](#certificates)
+  - [Fido Authenticator](#fido-authenticator)
+  - [Key Revocation Lists](#key-revocation-lists)
+  - [Allowed Signers](#allowed-signers)
+- [Environment](#environment)
+  - [Ssh_Sk_Provider](#ssh_sk_provider)
+- [Files](#files)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [On-Line Help](#on-line-help)
+- [Files](#files)
+- [See Also](#see-also)
+  - [Author](#author)
+  - [Bugs](#bugs)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Note](#note)
+- [Files](#files)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Parsing](#parsing)
+  - [Output](#output)
+  - [Quoting](#quoting)
+  - [Scanning Modes](#scanning-modes)
+  - [Compatibility](#compatibility)
+  - [Return Codes](#return-codes)
+- [Examples](#examples)
+- [Environment](#environment)
+  - [Posixly_Correct](#posixly_correct)
+  - [Getopt_Compatible](#getopt_compatible)
+  - [Bugs](#bugs)
+  - [Author](#author)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Files](#files)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Exit Status](#exit-status)
+  - [Facilities And Levels](#facilities-and-levels)
+  - [Conforming To](#conforming-to)
+- [Examples](#examples)
+- [Authors](#authors)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+
+
+## Name {#name}
+
+```
+logger - enter messages into the system log
+```
+
+
+
+## Synopsis {#synopsis}
+
+```
+logger [options] message
+```
+
+
+
+## Description {#description}
+
+```
+logger makes entries in the system log.
+
+When the optional message argument is present, it is written to the log. If it is not present, and the -f option is not given either, then standard input is logged.
+```
+
+
+
+## Options {#options}
+
+       **`-d`**, --udp
+           Use datagrams (UDP) only. By default the connection is tried to the syslog port defined in /etc/services, which is often 514.
+
+           See also --server and --socket to specify where to connect.
+
+       **`-e`**, --skip-empty
+           Ignore empty lines when processing files. An empty line is defined to be a line without any characters. Thus a line consisting only of whitespace is NOT considered empty. Note that when the
+           **`--prio-prefix option`** is specified, the priority is not part of the line. Thus an empty line in this mode is a line that does not have any characters after the priority prefix (e.g., <13>).
+
+       **`-f`**, --file file
+           Log the contents of the specified file. This option cannot be combined with a command-line message.
+
+       **`-i`**
+           Log the PID of the logger process with each line.
+
+       **`--id`**[=id]
+           Log the PID of the logger process with each line. When the optional argument id is specified, then it is used instead of the logger command’s PID. The use of --id=$$ (PPID) is recommended in
+           scripts that send several messages.
+
+           Note that the system logging infrastructure (for example systemd when listening on /dev/log) may follow local socket credentials to overwrite the PID specified in the message. logger(1) is
+           able to set those socket credentials to the given id, but only if you have root permissions and a process with the specified PID exists, otherwise the socket credentials are not modified and
+           the problem is silently ignored.
+
+       **`--journald`**[=file]
+           Write a systemd journal entry. The entry is read from the given file, when specified, otherwise from standard input. Each line must begin with a field that is accepted by journald; see
+           systemd.journal-fields(7) for details. The use of a MESSAGE_ID field is generally a good idea, as it makes finding entries easy. Examples:
+
+                  logger --journald <<end
+                  MESSAGE_ID=67feb6ffbaf24c5cbec13c008dd72309
+                  MESSAGE=The dogs bark, but the caravan goes on.
+                  DOGS=bark
+                  CARAVAN=goes on
+                  end
+
+                  logger --journald=entry.txt
+
+           Notice that --journald will ignore values of other options, such as priority. If priority is needed it must be within input, and use PRIORITY field. The simple execution of journalctl(1) will
+           display MESSAGE field. Use journalctl --output json-pretty to see rest of the fields.
+
+           To include newlines in MESSAGE, specify MESSAGE several times. This is handled as a special case, other fields will be stored as an array in the journal if they appear multiple times.
+
+       **`--msgid msgid`**
+           Sets the RFC 5424 <https://tools.ietf.org/html/rfc5424> MSGID field. Note that the space character is not permitted inside of msgid. This option is only used if --rfc5424 is specified as well;
+           otherwise, it is silently ignored.
+
+       **`-n`**, --server server
+           Write to the specified remote syslog server instead of to the system log socket. Unless --udp or --tcp is specified, logger will first try to use UDP, but if this fails a TCP connection is
+           attempted.
+
+       **`--no-act`**
+           Causes everything to be done except for writing the log message to the system log, and removing the connection to the journal. This option can be used together with --stderr for testing
+           purposes.
+
+       **`--octet-count`**
+           Use the RFC 6587 <https://tools.ietf.org/html/rfc6587> octet counting framing method for sending messages. When this option is not used, the default is no framing on UDP, and RFC6587
+           non-transparent framing (also known as octet stuffing) on TCP.
+
+       **`-P`**, --port port
+           Use the specified port. When this option is not specified, the port defaults to syslog for udp and to syslog-conn for tcp connections.
+
+       **`-p`**, --priority priority
+           Enter the message into the log with the specified priority. The priority may be specified numerically or as a facility.level pair. For example, -p local3.info logs the message as informational
+           in the local3 facility. The default is user.notice.
+
+       **`--prio-prefix`**
+           Look for a syslog prefix on every line read from standard input. This prefix is a decimal number within angle brackets that encodes both the facility and the level. The number is constructed
+           by multiplying the facility by 8 and then adding the level. For example, local0.info, meaning facility=16 and level=6, becomes <134>.
+
+           If the prefix contains no facility, the facility defaults to what is specified by the -p option. Similarly, if no prefix is provided, the line is logged using the priority given with -p.
+
+           This option doesn’t affect a command-line message.
+
+       **`--rfc3164`**
+           Use the RFC 3164 <https://tools.ietf.org/html/rfc3164> BSD syslog protocol to submit messages to a remote server.
+
+       **`--rfc5424`**[=without]
+           Use the RFC 5424 <https://tools.ietf.org/html/rfc5424> syslog protocol to submit messages to a remote server. The optional without argument can be a comma-separated list of the following
+           values: notq, notime, nohost.
+
+           The notq value suppresses the time-quality structured data from the submitted message. The time-quality information shows whether the local clock was synchronized plus the maximum number of
+           microseconds the timestamp might be off. The time quality is also automatically suppressed when --sd-id timeQuality is specified.
+
+           The notime value (which implies notq) suppresses the complete sender timestamp that is in ISO-8601 format, including microseconds and timezone.
+
+           The nohost value suppresses gethostname(2) information from the message header.
+
+           The RFC 5424 protocol has been the default for logger since version 2.26.
+
+       **`-s`**, --stderr
+           Output the message to standard error as well as to the system log.
+
+       **`--sd-id name`**[@digits]
+           Specifies a structured data element ID for an RFC 5424 message header. The option has to be used before --sd-param to introduce a new element. The number of structured data elements is
+           unlimited. The ID (name plus possibly @digits) is case-sensitive and uniquely identifies the type and purpose of the element. The same ID must not exist more than once in a message. The
+           @digits part is required for user-defined non-standardized IDs.
+
+           logger currently generates the timeQuality standardized element only. RFC 5424 also describes the elements origin (with parameters ip, enterpriseId, software and swVersion) and meta (with
+           parameters sequenceId, sysUpTime and language). These element IDs may be specified without the @digits suffix.
+
+       **`--sd-param name`**=value
+           Specifies a structured data element parameter, a name and value pair. The option has to be used after --sd-id and may be specified more than once for the same element. Note that the quotation
+           marks around value are required and must be escaped on the command line.
+
+                   logger --rfc5424 --sd-id zoo@123             \
+                                    **`--sd-param tiger`**="hungry"   \
+                                    **`--sd-param zebra`**="running"  \
+                                    **`--sd-id manager`**@123         \
+                                    **`--sd-param onMeeting`**="yes"  \
+```
+"this is message"
+
+```
+
+```
+produces:
+
+<13>1 2015-10-01T14:07:59.168662+02:00 ws kzak - - [timeQuality tzKnown="1" isSynced="1" syncAccuracy="218616"][zoo@123 tiger="hungry" zebra="running"][manager@123 onMeeting="yes"] this is
+message
+```
+
+
+       **`-S`**, --size size
+           Sets the maximum permitted message size to size. The default is 1KiB characters, which is the limit traditionally used and specified in RFC 3164. With RFC 5424, this limit has become flexible.
+           A good assumption is that RFC 5424 receivers can at least process 4KiB messages.
+
+           Most receivers accept messages larger than 1KiB over any type of syslog protocol. As such, the --size option affects logger in all cases (not only when --rfc5424 was used).
+
+           Note: the message-size limit limits the overall message size, including the syslog header. Header sizes vary depending on the selected options and the hostname length. As a rule of thumb,
+           headers are usually not longer than 50 to 80 characters. When selecting a maximum message size, it is important to ensure that the receiver supports the max size as well, otherwise messages
+           may become truncated. Again, as a rule of thumb two to four KiB message size should generally be OK, whereas anything larger should be verified to work.
+
+       **`--socket-errors`**[=mode]
+           Print errors about Unix socket connections. The mode can be a value of off, on, or auto. When the mode is auto, then logger will detect if the init process is systemd(1), and if so assumption
+           is made /dev/log can be used early at boot. Other init systems lack of /dev/log will not cause errors that is identical with messaging using openlog(3) system call. The logger(1) before
+           version 2.26 used openlog(3), and hence was unable to detected loss of messages sent to Unix sockets.
+
+           The default mode is auto. When errors are not enabled lost messages are not communicated and will result to successful exit status of logger(1) invocation.
+
+       **`-T`**, --tcp
+           Use stream (TCP) only. By default the connection is tried to the syslog-conn port defined in /etc/services, which is often 601.
+
+           See also --server and --socket to specify where to connect.
+
+       **`-t`**, --tag tag
+           Mark every line to be logged with the specified tag. The default tag is the name of the user logged in on the terminal (or a user name based on effective user ID).
+
+       **`-u`**, --socket socket
+           Write to the specified socket instead of to the system log socket.
+
+```
+--
+    End the argument list. This allows the message to start with a hyphen (-).
+```
+
+
+       **`-h`**, --help
+           Display help text and exit.
+
+       **`-V`**, --version
+           Print version and exit.
+
+
+### Exit Status {#exit-status}
+
+```
+The logger utility exits 0 on success, and >0 if an error occurs.
+```
+
+
+
+### Facilities And Levels {#facilities-and-levels}
+
+```
+Valid facility names are:
+
+auth
+authpriv for security information of a sensitive nature
+cron
+
+daemon
+ftp
+kern cannot be generated from userspace process, automatically converted to user
+
+lpr
+mail
+news
+syslog
+user
+uucp
+local0
+to
+local7
+security deprecated synonym for auth
+
+Valid level names are:
+
+emerg
+alert
+crit
+err
+warning
+notice
+info
+debug
+panic deprecated synonym for emerg
+error deprecated synonym for err
+warn deprecated synonym for warning
+
+For the priority order and intended purposes of these facilities and levels, see syslog(3).
+```
+
+
+
+### Conforming To {#conforming-to}
+
+```
+The logger command is expected to be IEEE Std 1003.2 ("POSIX.2") compatible.
+```
+
+
+
+## Examples {#examples}
+
+```
+logger System rebooted
+
+logger -p local0.notice -t HOSTIDM -f /dev/idmc
+
+logger -n loghost.example.com System rebooted
+```
+
+
+
+### Authors {#authors}
+
+```
+The logger command was originally written by University of California in 1983-1993 and later rewritten by Karel Zak <kzak@redhat.com>, Rainer Gerhards <rgerhards@adiscon.com>, and Sami Kerola
+<kerolasa@iki.fi>.
+```
+
+
+
+## See Also {#see-also}
+
+```
+journalctl(1), syslog(3), systemd.journal-fields(7)
+```
+
+
+
+### Reporting Bugs {#reporting-bugs}
+
+```
+For bug reports, use the issue tracker at https://github.com/util-linux/util-linux/issues.
+```
+
+
+
+### Availability {#availability}
+
+```
+The logger command is part of the util-linux package which can be downloaded from Linux Kernel Archive <https://www.kernel.org/pub/linux/utils/util-linux/>.
+```
+
+
+util-linux 2.39.3                                                                                2023-11-21                                                                                       [LOGGER(1)](LOGGER.html)

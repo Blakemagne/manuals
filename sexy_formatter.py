@@ -287,17 +287,33 @@ class SexyFormatter:
         return result, i - index
     
     def format_cross_references(self, line):
-        """Convert cross-references to links"""
+        """Convert cross-references to links and track missing manuals"""
         # Pattern for command(section) references
         pattern = r'\b([a-zA-Z][\w-]+)\((\d+[a-zA-Z]*)\)'
         
         def replace_ref(match):
             cmd = match.group(1)
             section = match.group(2)
+            # Track this reference for missing manual detection
+            self.track_manual_reference(cmd)
             # Create a link to a potential manual page
-            return f"[{cmd}({section})]({cmd}.md)"
+            return f"[{cmd}({section})]({cmd}.html)"
         
         return re.sub(pattern, replace_ref, line)
+    
+    def track_manual_reference(self, command):
+        """Track manual references for auto-stealing"""
+        if not hasattr(self, 'referenced_manuals'):
+            self.referenced_manuals = set()
+        self.referenced_manuals.add(command)
+    
+    def save_reference_list(self):
+        """Save list of referenced manuals for auto-stealing"""
+        if hasattr(self, 'referenced_manuals'):
+            with open('.manual_references.txt', 'w') as f:
+                for manual in sorted(self.referenced_manuals):
+                    f.write(f"{manual}\n")
+            print(f"📝 Tracked {len(self.referenced_manuals)} manual references")
     
     def generate_toc(self):
         """Generate table of contents"""
@@ -338,8 +354,12 @@ def main():
         
         print(f"Processing {input_file.name} -> {output_name}")
         formatter.format_manual(input_file, output_file)
+    
+    # Save reference list for auto-stealing
+    formatter.save_reference_list()
         
     print("\n✨ Sexy formatting complete!")
+    print("💡 Run 'python3 auto_steal.py' to steal missing referenced manuals!")
 
 
 if __name__ == "__main__":

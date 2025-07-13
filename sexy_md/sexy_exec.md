@@ -1,0 +1,811 @@
+# 📚 EXECL, Manual
+
+> *Beautiful, readable documentation for command-line tools*
+
+---
+
+[exec(3)](exec.html)                                                                                   Library Functions Manual                                                                                  [exec(3)](exec.html)
+
+
+## 📑 Table of Contents
+
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Environment](#environment)
+- [Files](#files)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Exit Codes](#exit-codes)
+- [See Also](#see-also)
+- [Examples](#examples)
+- [Authors](#authors)
+  - [Copyright](#copyright)
+  - [Notes](#notes)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Interactive Commands](#interactive-commands)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Examples](#examples)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+- [Files](#files)
+  - [Exit Values](#exit-values)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Compatibility](#compatibility)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+  - [Configuration](#configuration)
+- [Files](#files)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Default Key Bindings](#default-key-bindings)
+  - [Command Parsing And Execution](#command-parsing-and-execution)
+  - [Parsing Syntax](#parsing-syntax)
+  - [Commands](#commands)
+  - [Clients And Sessions](#clients-and-sessions)
+  - [Windows And Panes](#windows-and-panes)
+  - [Key Bindings](#key-bindings)
+- [Options](#options)
+  - [Hooks](#hooks)
+  - [Mouse Support](#mouse-support)
+  - [Formats](#formats)
+  - [Styles](#styles)
+  - [Names And Titles](#names-and-titles)
+  - [Global And Session Environment](#global-and-session-environment)
+  - [Status Line](#status-line)
+  - [Buffers](#buffers)
+  - [Miscellaneous](#miscellaneous)
+  - [Exit Messages](#exit-messages)
+  - [Terminfo Extensions](#terminfo-extensions)
+  - [Control Mode](#control-mode)
+- [Environment](#environment)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Commands](#commands)
+  - [Display Names](#display-names)
+  - [Example](#example)
+- [Environment](#environment)
+- [Files](#files)
+- [See Also](#see-also)
+  - [Bugs](#bugs)
+  - [Author](#author)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Examples](#examples)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [String1 = String2](#string1-=-string2)
+  - [String1 != String2](#string1-!=-string2)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Description](#description)
+- [Files](#files)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [See Also](#see-also)
+  - [Author](#author)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+- [Environment](#environment)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Caveats](#caveats)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Description](#description)
+- [Files](#files)
+  - [Standards](#standards)
+  - [Posix.2.](#posix.2.)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Advanced Usage](#advanced-usage)
+- [Environment](#environment)
+- [See Also](#see-also)
+  - [Diagnostics](#diagnostics)
+  - [Caveats](#caveats)
+  - [Bugs](#bugs)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright Notice](#copyright-notice)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, 4.2Bsd.](#posix.1-2001,-4.2bsd.)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Examples](#examples)
+- [See Also](#see-also)
+  - [Standards](#standards)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, Posix.2.](#posix.1-2001,-posix.2.)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Note](#note)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [* [-]Lcase](#*-[-]lcase)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Portability](#portability)
+- [Authors](#authors)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Files](#files)
+- [Authors](#authors)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Environment](#environment)
+- [Files](#files)
+  - [Portability](#portability)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Fionread](#fionread)
+  - [Tiocinq](#tiocinq)
+  - [Tiocoutq](#tiocoutq)
+  - [Tiocsti](#tiocsti)
+  - [Tioccons](#tioccons)
+  - [Tiocsctty](#tiocsctty)
+  - [Tiocnotty](#tiocnotty)
+  - [Tiocgpgrp](#tiocgpgrp)
+  - [Tiocspgrp](#tiocspgrp)
+  - [Tiocgsid](#tiocgsid)
+  - [Tiocexcl](#tiocexcl)
+  - [Tiocgexcl](#tiocgexcl)
+  - [Tiocnxcl](#tiocnxcl)
+  - [Tiocgetd](#tiocgetd)
+  - [Tiocsetd](#tiocsetd)
+  - [Tiocpkt](#tiocpkt)
+  - [Tiocgpkt](#tiocgpkt)
+  - [Tiocsptlck](#tiocsptlck)
+  - [Tiocgptlck](#tiocgptlck)
+  - [Tiocgptpeer](#tiocgptpeer)
+  - [Tiocmget](#tiocmget)
+  - [Tiocmset](#tiocmset)
+  - [Tiocmbic](#tiocmbic)
+  - [Tiocmbis](#tiocmbis)
+  - [Tiocgsoftcar](#tiocgsoftcar)
+  - [Tiocssoftcar](#tiocssoftcar)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [C11, Posix.1-2008.](#c11,-posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, C89.](#posix.1-2001,-c89.)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001.](#posix.1-2001.)
+  - [Caveats](#caveats)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001.](#posix.1-2001.)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [C11, Posix.1-2008.](#c11,-posix.1-2008.)
+  - [History](#history)
+  - [Caveats](#caveats)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+
+
+## Name {#name}
+
+```
+execl, execlp, execle, execv, execvp, execvpe - execute a file
+```
+
+
+
+### Library {#library}
+
+```
+Standard C library (libc, -lc)
+```
+
+
+
+## Synopsis {#synopsis}
+
+```
+#include <unistd.h>
+
+extern char **environ;
+
+int execl(const char *pathname, const char *arg, ...
+                /*, (char *) NULL */);
+int execlp(const char *file, const char *arg, ...
+                /*, (char *) NULL */);
+int execle(const char *pathname, const char *arg, ...
+                /*, (char *) NULL, char *const envp[] */);
+int execv(const char *pathname, char *const argv[]);
+int execvp(const char *file, char *const argv[]);
+int execvpe(const char *file, char *const argv[], char *const envp[]);
+```
+
+
+   Feature Test Macro Requirements for glibc (see [feature_test_macros(7)](feature_test_macros.html)):
+
+```
+execvpe():
+    _GNU_SOURCE
+```
+
+
+
+## Description {#description}
+
+```
+The  exec() family of functions replaces the current process image with a new process image.  The functions described in this manual page are layered on top of execve(2).  (See the manual page for
+execve(2) for further details about the replacement of the current process image.)
+
+The initial argument for these functions is the name of a file that is to be executed.
+
+The functions can be grouped based on the letters following the "exec" prefix.
+```
+
+
+   l - execl(), execlp(), execle()
+```
+The const char *arg and subsequent ellipses can be thought of as arg0, arg1, ..., argn.  Together they describe a list of one or more pointers to null-terminated strings that represent  the  argu‐
+ment  list available to the executed program.  The first argument, by convention, should point to the filename associated with the file being executed.  The list of arguments must be terminated by
+a null pointer, and, since these are variadic functions, this pointer must be cast (char *) NULL.
+
+By contrast with the 'l' functions, the 'v' functions (below) specify the command-line arguments of the executed program as a vector.
+```
+
+
+   v - execv(), execvp(), execvpe()
+```
+The char *const argv[] argument is an array of pointers to null-terminated strings that represent the argument list available to the new program.  The first argument, by convention,  should  point
+to the filename associated with the file being executed.  The array of pointers must be terminated by a null pointer.
+```
+
+
+   e - execle(), execvpe()
+```
+The environment of the new process image is specified via the argument envp.  The envp argument is an array of pointers to null-terminated strings and must be terminated by a null pointer.
+
+All other exec() functions (which do not include 'e' in the suffix) take the environment for the new process image from the external variable environ in the calling process.
+```
+
+
+   p - execlp(), execvp(), execvpe()
+```
+These  functions duplicate the actions of the shell in searching for an executable file if the specified filename does not contain a slash (/) character.  The file is sought in the colon-separated
+list of directory pathnames specified in the PATH environment variable.  If this variable isn't defined, the path list  defaults  to  a  list  that  includes  the  directories  returned  by  conf‐
+str(_CS_PATH) (which typically returns the value "/bin:/usr/bin") and possibly also the current working directory; see NOTES for further details.
+
+execvpe() searches for the program using the value of PATH from the caller's environment, not from the envp argument.
+
+If the specified filename includes a slash character, then PATH is ignored, and the file at the specified pathname is executed.
+
+In addition, certain errors are treated specially.
+
+If permission is denied for a file (the attempted execve(2) failed with the error EACCES), these functions will continue searching the rest of the search path.  If no other file is found, however,
+they will return with errno set to EACCES.
+
+If  the header of a file isn't recognized (the attempted execve(2) failed with the error ENOEXEC), these functions will execute the shell (/bin/sh) with the path of the file as its first argument.
+(If this attempt fails, no further searching is done.)
+
+All other exec() functions (which do not include 'p' in the suffix) take as their first argument a (relative or absolute) pathname that identifies the program to be executed.
+```
+
+
+
+### Return Value {#return-value}
+
+```
+The exec() functions return only if an error has occurred.  The return value is -1, and errno is set to indicate the error.
+```
+
+
+
+### Errors {#errors}
+
+```
+All of these functions may fail and set errno for any of the errors specified for execve(2).
+```
+
+
+
+### Attributes {#attributes}
+
+```
+For an explanation of the terms used in this section, see attributes(7).
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────────────┬─────────────┐
+│ Interface                                                                                                                                                          │ Attribute     │ Value       │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────┼─────────────┤
+│ execl(), execle(), execv()                                                                                                                                         │ Thread safety │ MT-Safe     │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────┼─────────────┤
+│ execlp(), execvp(), execvpe()                                                                                                                                      │ Thread safety │ MT-Safe env │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────┴─────────────┘
+```
+
+
+
+### Versions {#versions}
+
+```
+The default search path (used when the environment does not contain the variable PATH) shows some variation across systems.  It generally includes /bin and /usr/bin (in that order)  and  may  also
+include the current working directory.  On some other systems, the current working is included after /bin and /usr/bin, as an anti-Trojan-horse measure.  The glibc implementation long followed the
+traditional default where the current working directory is included at the start of the search path.  However, some code refactoring during the development of glibc 2.24 caused the current working
+directory to be dropped altogether from the default search path.  This accidental behavior change is considered mildly beneficial, and won't be reverted.
+
+The behavior of execlp() and execvp() when errors occur while attempting to execute the file is historic practice, but has not traditionally been documented and is not specified by the POSIX stan‐
+dard.  BSD (and possibly other systems) do an automatic sleep and retry if ETXTBSY is encountered.  Linux treats it as a hard error and returns immediately.
+
+Traditionally,  the  functions execlp() and execvp() ignored all errors except for the ones described above and ENOMEM and E2BIG, upon which they returned.  They now return if any error other than
+the ones described above occurs.
+```
+
+
+
+### Standards {#standards}
+
+```
+environ
+execl()
+execlp()
+execle()
+execv()
+execvp()
+       POSIX.1-2008.
+
+execvpe()
+       GNU.
+```
+
+
+
+### History {#history}
+
+```
+environ
+execl()
+execlp()
+execle()
+execv()
+execvp()
+       POSIX.1-2001.
+
+execvpe()
+       glibc 2.11.
+```
+
+
+
+### Bugs {#bugs}
+
+```
+Before glibc 2.24, execl() and execle() employed realloc(3) internally and were consequently not async-signal-safe, in violation of the requirements of POSIX.1.  This was fixed in glibc 2.24.
+```
+
+
+   Architecture-specific details
+```
+On sparc and sparc64, execv() is provided as a system call by the kernel (with the prototype shown above) for compatibility with SunOS.  This function is not employed by the execv() wrapper  func‐
+tion on those architectures.
+```
+
+
+
+## See Also {#see-also}
+
+```
+sh(1), execve(2), execveat(2), fork(2), ptrace(2), fexecve(3), system(3), environ(7)
+```
+
+
+Linux man-pages 6.7                                                                              2023-10-31                                                                                         [exec(3)](exec.html)

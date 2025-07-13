@@ -4,7 +4,10 @@ from textnode import TextNode, TextType
 
 
 def text_to_textnodes(text):
-    nodes = [TextNode(text, TextType.TEXT)]
+    # First enhance manual references before processing other formatting
+    enhanced_text = enhance_manual_references(text)
+    
+    nodes = [TextNode(enhanced_text, TextType.TEXT)]
     nodes = split_nodes_delimiter(nodes, "**", TextType.BOLD)
     nodes = split_nodes_delimiter(nodes, "_", TextType.ITALIC)
     nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
@@ -220,3 +223,19 @@ def extract_markdown_links(text):
     pattern = r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)"
     matches = re.findall(pattern, text)
     return matches
+
+
+def enhance_manual_references(text):
+    """
+    Convert manual references like 'ssh-agent(1)' to links
+    """
+    # Pattern for manual references: command(section)
+    pattern = r'\b([a-zA-Z][\w-]+)\((\d+[a-zA-Z]*)\)'
+    
+    def replace_ref(match):
+        cmd = match.group(1)
+        section = match.group(2)
+        # Create a link to the manual page
+        return f'[{cmd}({section})](./{cmd}.html)'
+    
+    return re.sub(pattern, replace_ref, text)

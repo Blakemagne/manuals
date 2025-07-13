@@ -1,0 +1,780 @@
+# 📚 GETUTENT, Manual
+
+> *Beautiful, readable documentation for command-line tools*
+
+---
+
+[getutent(3)](getutent.html)                                                                               Library Functions Manual                                                                              [getutent(3)](getutent.html)
+
+
+## 📑 Table of Contents
+
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Environment](#environment)
+- [Files](#files)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Exit Codes](#exit-codes)
+- [See Also](#see-also)
+- [Examples](#examples)
+- [Authors](#authors)
+  - [Copyright](#copyright)
+  - [Notes](#notes)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Interactive Commands](#interactive-commands)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Examples](#examples)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+- [Files](#files)
+  - [Exit Values](#exit-values)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Compatibility](#compatibility)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+  - [Configuration](#configuration)
+- [Files](#files)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Default Key Bindings](#default-key-bindings)
+  - [Command Parsing And Execution](#command-parsing-and-execution)
+  - [Parsing Syntax](#parsing-syntax)
+  - [Commands](#commands)
+  - [Clients And Sessions](#clients-and-sessions)
+  - [Windows And Panes](#windows-and-panes)
+  - [Key Bindings](#key-bindings)
+- [Options](#options)
+  - [Hooks](#hooks)
+  - [Mouse Support](#mouse-support)
+  - [Formats](#formats)
+  - [Styles](#styles)
+  - [Names And Titles](#names-and-titles)
+  - [Global And Session Environment](#global-and-session-environment)
+  - [Status Line](#status-line)
+  - [Buffers](#buffers)
+  - [Miscellaneous](#miscellaneous)
+  - [Exit Messages](#exit-messages)
+  - [Terminfo Extensions](#terminfo-extensions)
+  - [Control Mode](#control-mode)
+- [Environment](#environment)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Commands](#commands)
+  - [Display Names](#display-names)
+  - [Example](#example)
+- [Environment](#environment)
+- [Files](#files)
+- [See Also](#see-also)
+  - [Bugs](#bugs)
+  - [Author](#author)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Examples](#examples)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [String1 = String2](#string1-=-string2)
+  - [String1 != String2](#string1-!=-string2)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Description](#description)
+- [Files](#files)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [See Also](#see-also)
+  - [Author](#author)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+- [Environment](#environment)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Caveats](#caveats)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Description](#description)
+- [Files](#files)
+  - [Standards](#standards)
+  - [Posix.2.](#posix.2.)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Advanced Usage](#advanced-usage)
+- [Environment](#environment)
+- [See Also](#see-also)
+  - [Diagnostics](#diagnostics)
+  - [Caveats](#caveats)
+  - [Bugs](#bugs)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright Notice](#copyright-notice)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, 4.2Bsd.](#posix.1-2001,-4.2bsd.)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Examples](#examples)
+- [See Also](#see-also)
+  - [Standards](#standards)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, Posix.2.](#posix.1-2001,-posix.2.)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Note](#note)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [* [-]Lcase](#*-[-]lcase)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Portability](#portability)
+- [Authors](#authors)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Files](#files)
+- [Authors](#authors)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Environment](#environment)
+- [Files](#files)
+  - [Portability](#portability)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Fionread](#fionread)
+  - [Tiocinq](#tiocinq)
+  - [Tiocoutq](#tiocoutq)
+  - [Tiocsti](#tiocsti)
+  - [Tioccons](#tioccons)
+  - [Tiocsctty](#tiocsctty)
+  - [Tiocnotty](#tiocnotty)
+  - [Tiocgpgrp](#tiocgpgrp)
+  - [Tiocspgrp](#tiocspgrp)
+  - [Tiocgsid](#tiocgsid)
+  - [Tiocexcl](#tiocexcl)
+  - [Tiocgexcl](#tiocgexcl)
+  - [Tiocnxcl](#tiocnxcl)
+  - [Tiocgetd](#tiocgetd)
+  - [Tiocsetd](#tiocsetd)
+  - [Tiocpkt](#tiocpkt)
+  - [Tiocgpkt](#tiocgpkt)
+  - [Tiocsptlck](#tiocsptlck)
+  - [Tiocgptlck](#tiocgptlck)
+  - [Tiocgptpeer](#tiocgptpeer)
+  - [Tiocmget](#tiocmget)
+  - [Tiocmset](#tiocmset)
+  - [Tiocmbic](#tiocmbic)
+  - [Tiocmbis](#tiocmbis)
+  - [Tiocgsoftcar](#tiocgsoftcar)
+  - [Tiocssoftcar](#tiocssoftcar)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [C11, Posix.1-2008.](#c11,-posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001, C89.](#posix.1-2001,-c89.)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+
+
+## Name {#name}
+
+```
+getutent, getutid, getutline, pututline, setutent, endutent, utmpname - access utmp file entries
+```
+
+
+
+### Library {#library}
+
+```
+Standard C library (libc, -lc)
+```
+
+
+
+## Synopsis {#synopsis}
+
+```
+#include <utmp.h>
+
+struct utmp *getutent(void);
+struct utmp *getutid(const struct utmp *ut);
+struct utmp *getutline(const struct utmp *ut);
+
+struct utmp *pututline(const struct utmp *ut);
+
+void setutent(void);
+void endutent(void);
+
+int utmpname(const char *file);
+```
+
+
+
+## Description {#description}
+
+```
+New applications should use the POSIX.1-specified "utmpx" versions of these functions; see STANDARDS.
+
+utmpname() sets the name of the utmp-format file for the other utmp functions to access.  If utmpname() is not used to set the filename before the other functions are used, they assume _PATH_UTMP,
+as defined in <paths.h>.
+
+setutent() rewinds the file pointer to the beginning of the utmp file.  It is generally a good idea to call it before any of the other functions.
+
+endutent() closes the utmp file.  It should be called when the user code is done accessing the file with the other functions.
+
+getutent()  reads  a  line  from  the  current file position in the utmp file.  It returns a pointer to a structure containing the fields of the line.  The definition of this structure is shown in
+utmp(5).
+
+getutid() searches forward from the current file position in the utmp file based upon ut.  If ut->ut_type is one of RUN_LVL, BOOT_TIME, NEW_TIME, or OLD_TIME, getutid() will find the  first  entry
+whose  ut_type  field  matches  ut->ut_type.   If  ut->ut_type  is  one of INIT_PROCESS, LOGIN_PROCESS, USER_PROCESS, or DEAD_PROCESS, getutid() will find the first entry whose ut_id field matches
+ut->ut_id.
+
+getutline() searches forward from the current file position in the utmp file.  It scans entries whose ut_type is USER_PROCESS or LOGIN_PROCESS and returns the first one whose ut_line field matches
+ut->ut_line.
+
+pututline() writes the utmp structure ut into the utmp file.  It uses getutid() to search for the proper place in the file to insert the new entry.  If it cannot find an appropriate slot  for  ut,
+pututline() will append the new entry to the end of the file.
+```
+
+
+
+### Return Value {#return-value}
+
+```
+getutent(),  getutid(),  and  getutline()  return  a pointer to a struct utmp on success, and NULL on failure (which includes the "record not found" case).  This struct utmp is allocated in static
+storage, and may be overwritten by subsequent calls.
+
+On success pututline() returns ut; on failure, it returns NULL.
+
+utmpname() returns 0 if the new name was successfully stored, or -1 on failure.
+
+On failure, these functions errno set to indicate the error.
+```
+
+
+
+### Errors {#errors}
+
+```
+ENOMEM Out of memory.
+
+ESRCH  Record not found.
+
+setutent(), pututline(), and the getut*() functions can also fail for the reasons described in open(2).
+```
+
+
+
+### Files {#files}
+
+```
+/var/run/utmp
+       database of currently logged-in users
+
+/var/log/wtmp
+       database of past user logins
+```
+
+
+
+### Attributes {#attributes}
+
+```
+For an explanation of the terms used in this section, see attributes(7).
+┌────────────────────────────────────┬───────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Interface                          │ Attribute     │ Value                                                                                                                                       │
+├────────────────────────────────────┼───────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ getutent()                         │ Thread safety │ MT-Unsafe init race:utent race:utentbuf sig:ALRM timer                                                                                      │
+├────────────────────────────────────┼───────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ getutid(), getutline()             │ Thread safety │ MT-Unsafe init race:utent sig:ALRM timer                                                                                                    │
+├────────────────────────────────────┼───────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ pututline()                        │ Thread safety │ MT-Unsafe race:utent sig:ALRM timer                                                                                                         │
+├────────────────────────────────────┼───────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ setutent(), endutent(), utmpname() │ Thread safety │ MT-Unsafe race:utent                                                                                                                        │
+└────────────────────────────────────┴───────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+In the above table, utent in race:utent signifies that if any of the functions setutent(), getutent(), getutid(), getutline(), pututline(), utmpname(), or endutent() are used in parallel  in  dif‐
+ferent threads of a program, then data races could occur.
+```
+
+
+
+### Standards {#standards}
+
+```
+None.
+```
+
+
+
+### History {#history}
+
+```
+XPG2, SVr4.
+
+In  XPG2  and  SVID 2 the function pututline() is documented to return void, and that is what it does on many systems (AIX, HP-UX).  HP-UX introduces a new function _pututline() with the prototype
+given above for pututline().
+
+All these functions are obsolete now on non-Linux systems.  POSIX.1-2001 and POSIX.1-2008, following SUSv1, does not have any of these functions, but instead uses
+
+    #include <utmpx.h>
+
+    struct utmpx *getutxent(void);
+    struct utmpx *getutxid(const struct utmpx *);
+    struct utmpx *getutxline(const struct utmpx *);
+    struct utmpx *pututxline(const struct utmpx *);
+    void setutxent(void);
+    void endutxent(void);
+
+These functions are provided by glibc, and perform the same task as their equivalents without the "x", but use struct utmpx, defined on Linux to be the same  as  struct  utmp.   For  completeness,
+glibc also provides utmpxname(), although this function is not specified by POSIX.1.
+
+On  some  other  systems,  the  utmpx  structure  is  a superset of the utmp structure, with additional fields, and larger versions of the existing fields, and parallel files are maintained, often
+/var/*/utmpx and /var/*/wtmpx.
+
+Linux glibc on the other hand does not use a parallel utmpx file since its utmp structure is already large enough.  The "x" functions listed above are just aliases for their  counterparts  without
+the "x" (e.g., getutxent() is an alias for getutent()).
+```
+
+
+
+### Notes {#notes}
+
+   glibc notes
+```
+The above functions are not thread-safe.  glibc adds reentrant versions
+
+#include <utmp.h>
+
+int getutent_r(struct utmp *ubuf, struct utmp **ubufp);
+int getutid_r(struct utmp *ut,
+              struct utmp *ubuf, struct utmp **ubufp);
+int getutline_r(struct utmp *ut,
+                struct utmp *ubuf, struct utmp **ubufp);
+
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+
+getutent_r(), getutid_r(), getutline_r():
+    _GNU_SOURCE
+        || /* Since glibc 2.19: */ _DEFAULT_SOURCE
+        || /* glibc <= 2.19: */    _SVID_SOURCE || _BSD_SOURCE
+
+These  functions  are GNU extensions, analogs of the functions of the same name without the _r suffix.  The ubuf argument gives these functions a place to store their result.  On success, they re‐
+turn 0, and a pointer to the result is written in *ubufp.  On error, these functions return -1.  There are no utmpx equivalents of the above functions.  (POSIX.1 does not specify such functions.)
+```
+
+
+
+## Examples {#examples}
+
+```
+The following example adds and removes a utmp record, assuming it is run from within a pseudo terminal.  For usage in a real application, you should check the return values of getpwuid(3) and tty‐
+name(3).
+
+#include <pwd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#include <utmp.h>
+
+int
+main(void)
+{
+    struct utmp entry;
+
+    system("echo before adding entry:;who");
+
+    entry.ut_type = USER_PROCESS;
+    entry.ut_pid = getpid();
+    strcpy(entry.ut_line, ttyname(STDIN_FILENO) + strlen("/dev/"));
+    /* only correct for ptys named /dev/tty[pqr][0-9a-z] */
+    strcpy(entry.ut_id, ttyname(STDIN_FILENO) + strlen("/dev/tty"));
+    entry.ut_time = time(NULL);
+    strcpy(entry.ut_user, getpwuid(getuid())->pw_name);
+    memset(entry.ut_host, 0, UT_HOSTSIZE);
+    entry.ut_addr = 0;
+    setutent();
+    pututline(&entry);
+
+    system("echo after adding entry:;who");
+
+    entry.ut_type = DEAD_PROCESS;
+    memset(entry.ut_line, 0, UT_LINESIZE);
+    entry.ut_time = 0;
+    memset(entry.ut_user, 0, UT_NAMESIZE);
+    setutent();
+    pututline(&entry);
+
+    system("echo after removing entry:;who");
+
+    endutent();
+    exit(EXIT_SUCCESS);
+}
+```
+
+
+
+## See Also {#see-also}
+
+```
+getutmp(3), utmp(5)
+```
+
+
+Linux man-pages 6.7                                                                              2023-10-31                                                                                     [getutent(3)](getutent.html)
