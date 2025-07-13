@@ -23,11 +23,15 @@ og_man/           →    sexy_md/           →    sexy_html/
 
 ### Features
 
-- Table of contents generation
-- Enhanced option/flag formatting
-- Syntax-highlighted code blocks
-- Cross-reference linking
-- Mobile-responsive HTML output
+- **🏠 Home navigation** - Every manual has a home button
+- **🔗 Smart cross-references** - Manual references become clickable links
+- **🤖 Auto-detection** - System finds missing referenced manuals
+- **🏴‍☠️ Auto-stealing** - Automatically steals missing manuals
+- **📑 Table of contents** - Generated navigation for every manual
+- **🎨 Enhanced formatting** - Options and flags styled for readability
+- **💻 Syntax highlighting** - Code examples that actually look good
+- **📱 Mobile-responsive** - Beautiful on any device
+- **⚡ Professional parser** - Handles complex markdown without breaking
 
 ## Complete Workflow
 
@@ -41,32 +45,28 @@ fop > og_man/git.md
 # 2. Format to sexy markdown
 python3 sexy_formatter.py
 
-# 3. Add to website (automated)
-python3 add_manual.py git
+# 3. Auto-steal missing referenced manuals
+python3 auto_steal.py
 
-# 4. Deploy to GitHub Pages
+# 4. Copy to site content
+cp sexy_md/sexy_*.md public/content/
+
+# 5. Generate HTML and deploy
+cd public && python3 src/main.py
 git add docs/ && git commit -m "Add git manual" && git push
 ```
 
-### Manual Steps (if automation fails)
+### Advanced Features
 
 ```bash
-# If add_manual.py doesn't work, do this manually:
+# Scan for missing manual references
+python3 auto_steal.py --scan
 
-# 1-2. Same as above (steal and format)
+# Steal a specific manual
+python3 auto_steal.py --steal ssh-agent
 
-# 3. Create simple version for site
-cp sexy_md/sexy_git.md public/content/git.md
-# Edit git.md to remove complex formatting
-
-# 4. Update homepage
-# Edit public/content/index.md to add link
-
-# 5. Generate HTML
-cd public && python3 src/main.py
-
-# 6. Deploy
-git add docs/ && git commit -m "Add git manual" && git push
+# Auto-steal all missing referenced manuals
+python3 auto_steal.py
 ```
 
 ---
