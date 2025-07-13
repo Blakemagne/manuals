@@ -190,8 +190,8 @@ def categorize_manual(filename):
     else:
         command = filename
     
-    # Remove .html extension
-    command = command.replace('.html', '')
+    # Remove file extension
+    command = command.replace('.html', '').replace('.md', '')
     
     # Check each category
     for category, data in MANUAL_CATEGORIES.items():
@@ -227,10 +227,10 @@ def create_category_index(category, commands, description):
     return content
 
 def organize_manuals():
-    """Organize all HTML files in docs/ into categorized directories"""
-    docs_dir = Path("docs")
-    if not docs_dir.exists():
-        print("❌ Error: docs/ directory not found!")
+    """Organize all markdown files in public/content/ into categorized directories"""
+    content_dir = Path("public/content")
+    if not content_dir.exists():
+        print("❌ Error: public/content/ directory not found!")
         return
     
     print("📁 Organizing manuals into categories...")
@@ -240,34 +240,34 @@ def organize_manuals():
     category_commands = {cat: [] for cat in MANUAL_CATEGORIES.keys()}
     category_commands['misc'] = []
     
-    # Categorize all HTML files
-    for html_file in docs_dir.glob("*.html"):
-        if html_file.name == "index.html":
+    # Categorize all markdown files
+    for md_file in content_dir.glob("*.md"):
+        if md_file.name == "index.md":
             continue
             
-        category = categorize_manual(html_file.name)
+        category = categorize_manual(md_file.name)
         if category not in categorized_files:
             categorized_files[category] = []
-        categorized_files[category].append(html_file)
+        categorized_files[category].append(md_file)
         
         # Track command name for index
-        if html_file.name.startswith('sexy_'):
-            cmd_name = html_file.name[5:].replace('.html', '')
+        if md_file.name.startswith('sexy_'):
+            cmd_name = md_file.name[5:].replace('.md', '')
         else:
-            cmd_name = html_file.name.replace('.html', '')
+            cmd_name = md_file.name.replace('.md', '')
         category_commands[category].append(cmd_name)
     
-    # Create category directories and move files
+    # Create category directories and organize files
     for category, files in categorized_files.items():
-        category_dir = docs_dir / category
+        category_dir = content_dir / category
         category_dir.mkdir(exist_ok=True)
         
         print(f"📂 Creating {category}/ with {len(files)} manuals")
         
-        # Copy files to category directory (don't move - keep originals)
+        # Move files to category directory
         for file in files:
             new_path = category_dir / file.name
-            shutil.copy2(str(file), str(new_path))
+            shutil.move(str(file), str(new_path))
         
         # Create category index
         if category in MANUAL_CATEGORIES:
@@ -298,7 +298,7 @@ def update_main_index(categorized_files):
         print("⚠️  Warning: main index.md not found, skipping update")
         return
     
-    # Create new organized index content with card layout
+    # Create new organized index content with simple markdown
     content = """# Sexy Shell Manuals
 
 Beautiful, readable documentation for command-line tools organized by category.
@@ -307,10 +307,9 @@ Making shell documentation sexy, one manual at a time.
 
 ## Browse by Category
 
-<div class="category-grid">
 """
     
-    # Add category cards
+    # Add category links (simple markdown that works with the parser)
     for category, files in sorted(categorized_files.items()):
         if category in MANUAL_CATEGORIES:
             description = MANUAL_CATEGORIES[category]['description']
@@ -334,17 +333,12 @@ Making shell documentation sexy, one manual at a time.
             description = "Miscellaneous Tools"
             icon = '📚'
             
-        content += f"""<div class="category-card">
-### {icon} [{description}](./{category}/index.html)
-{len(files)} manuals available
-</div>
-"""
+        content += f"### {icon} [{description}](./{category}/index.html)\n"
+        content += f"*{len(files)} manuals available*\n\n"
     
-    content += "</div>\n\n"
-    
-    content += f"""<div class="stats">
+    content += f"""---
+
 **📋 {sum(len(files) for files in categorized_files.values())} manuals available!**
-</div>
 
 ## About This Project
 

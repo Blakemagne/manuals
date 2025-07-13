@@ -65,25 +65,16 @@ def main():
         shutil.copy2(file, "public/content/")
     print(f"✅ Copied {len(sexy_files)} sexy markdown files")
     
-    # Step 4: Generate HTML with static site generator
-    print("🔄 Generating HTML with static site generator...")
+    # Step 4: Organize content before HTML generation
+    if not run_command("python3 organize_manuals.py", "Organizing content structure"):
+        print("⚠️  Warning: Organization failed, continuing...")
+    
+    # Step 5: Generate HTML with organized structure
+    print("🔄 Generating HTML with organized structure...")
     original_dir = os.getcwd()
     try:
         os.chdir("public")
-        if not run_command("python3 src/main.py", "Generating HTML"):
-            sys.exit(1)
-    finally:
-        os.chdir(original_dir)
-    
-    # Step 5: Organize manuals into categories
-    if not run_command("python3 organize_manuals.py", "Organizing manuals by category"):
-        print("⚠️  Warning: Organization failed, continuing...")
-    
-    # Step 6: Regenerate HTML with organized structure
-    print("🔄 Regenerating HTML with organized structure...")
-    try:
-        os.chdir("public")
-        if not run_command("python3 src/main.py", "Regenerating organized HTML"):
+        if not run_command("python3 src/main.py", "Generating organized HTML"):
             sys.exit(1)
     finally:
         os.chdir(original_dir)

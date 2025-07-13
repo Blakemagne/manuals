@@ -6,60 +6,45 @@ Making shell documentation sexy, one manual at a time.
 
 ## Browse by Category
 
-<div class="category-grid">
-<div class="category-card">
 ### 📦 [Compression & Archive Tools](./archive/index.html)
-6 manuals available
-</div>
-<div class="category-card">
-### 💻 [Programming & Development Tools](./development/index.html)
-1 manuals available
-</div>
-<div class="category-card">
-### 📖 [Documentation & Help Systems](./documentation/index.html)
-2 manuals available
-</div>
-<div class="category-card">
-### ✏️ [Text Editors & IDEs](./editors/index.html)
-2 manuals available
-</div>
-<div class="category-card">
-### 📁 [File Operations & Text Processing](./files/index.html)
-20 manuals available
-</div>
-<div class="category-card">
-### 📚 [Miscellaneous Tools](./misc/index.html)
-583 manuals available
-</div>
-<div class="category-card">
-### 📊 [System Monitoring & Performance](./monitoring/index.html)
-1 manuals available
-</div>
-<div class="category-card">
-### 🌐 [Network Tools & Communication](./network/index.html)
-6 manuals available
-</div>
-<div class="category-card">
-### 🔒 [Security & Encryption Tools](./security/index.html)
-3 manuals available
-</div>
-<div class="category-card">
-### 🐚 [Shell & Terminal Tools](./shell/index.html)
-11 manuals available
-</div>
-<div class="category-card">
-### ⚙️ [System Administration & Core Tools](./system/index.html)
-36 manuals available
-</div>
-<div class="category-card">
-### 🐳 [Virtualization & Containers](./virtualization/index.html)
-1 manuals available
-</div>
-</div>
+*6 manuals available*
 
-<div class="stats">
-**📋 672 manuals available!**
-</div>
+### 💻 [Programming & Development Tools](./development/index.html)
+*2 manuals available*
+
+### 📖 [Documentation & Help Systems](./documentation/index.html)
+*3 manuals available*
+
+### ✏️ [Text Editors & IDEs](./editors/index.html)
+*2 manuals available*
+
+### 📁 [File Operations & Text Processing](./files/index.html)
+*25 manuals available*
+
+### 📚 [Miscellaneous Tools](./misc/index.html)
+*737 manuals available*
+
+### 📊 [System Monitoring & Performance](./monitoring/index.html)
+*1 manuals available*
+
+### 🌐 [Network Tools & Communication](./network/index.html)
+*6 manuals available*
+
+### 🔒 [Security & Encryption Tools](./security/index.html)
+*4 manuals available*
+
+### 🐚 [Shell & Terminal Tools](./shell/index.html)
+*11 manuals available*
+
+### ⚙️ [System Administration & Core Tools](./system/index.html)
+*40 manuals available*
+
+### 🐳 [Virtualization & Containers](./virtualization/index.html)
+*1 manuals available*
+
+---
+
+**📋 838 manuals available!**
 
 ## About This Project
 
