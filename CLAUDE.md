@@ -14,11 +14,11 @@ Transform boring, hard-to-read manual pages into visually appealing, easy-to-nav
 
 ```
 manuals/
-├── og_man/         # Original manual pages pasted here - TO BE CREATED
-├── sexy_md/        # Enhanced markdown versions (sexy_ssh.md, sexy_tmux.md, etc.) - TO BE CREATED  
-├── sexy_html/      # Generated HTML documentation - TO BE CREATED
-├── ssh.md          # Current markdown copy of ssh manual
-└── tmux.md         # Current markdown copy of tmux manual
+├── og_man/         # Original manual pages pasted here
+├── sexy_md/        # Enhanced markdown versions (sexy_ssh.md, sexy_tmux.md, etc.)
+├── docs/           # Generated HTML for GitHub Pages
+├── public/         # Static site generator
+└── sexy_formatter.py  # Autoformatting script
 ```
 
 ## Processing Pipeline
@@ -26,7 +26,7 @@ manuals/
 1. **Input**: Original manual pages are pasted into `og_man/`
 2. **Conversion**: Automated formatting creates enhanced "sexy" markdown versions in `sexy_md/`
    - Files will be named with `sexy_` prefix (e.g., `sexy_ssh.md`, `sexy_tmux.md`)
-3. **Generation**: Static site generator creates beautiful HTML pages in `sexy_html/`
+3. **Generation**: Static site generator creates beautiful HTML pages in `docs/` for GitHub Pages
 
 ## Current Status
 
