@@ -6,8 +6,8 @@ Making shell documentation sexy, one manual at a time.
 
 ## Available Manuals
 
-- [SSH - OpenSSH Client](./ssh.html) - Secure Shell remote login client
-- [TMUX - Terminal Multiplexer](./tmux.html) - Manage multiple terminal sessions
+- [📚 SSH - OpenSSH Client](./ssh_sexy.html) - Secure Shell remote login client
+- [📚 TMUX - Terminal Multiplexer](./tmux_sexy.html) - Manage multiple terminal sessions
 
 ## About This Project
 
