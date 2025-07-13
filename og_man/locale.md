@@ -1,4 +1,4 @@
-locale(1)                                                                                 General Commands Manual                                                                                 locale(1)
+locale(1)                   General Commands Manual                  locale(1)
 
 NAME
        locale - get locale-specific information
@@ -10,47 +10,68 @@ SYNOPSIS
        locale [option] name...
 
 DESCRIPTION
-       The locale command displays information about the current locale, or all locales, on standard output.
+       The  locale  command  displays information about the current locale, or
+       all locales, on standard output.
 
-       When  invoked  without  arguments,  locale displays the current locale settings for each locale category (see locale(5)), based on the settings of the environment variables that control the locale
-       (see locale(7)).  Values for variables set in the environment are printed without double quotes, implied values are printed with double quotes.
+       When invoked without arguments, locale displays the current locale set‐
+       tings for each locale category (see locale(5)), based on  the  settings
+       of  the  environment variables that control the locale (see locale(7)).
+       Values for variables set in the environment are printed without  double
+       quotes, implied values are printed with double quotes.
 
-       If either the -a or the -m option (or one of their long-format equivalents) is specified, the behavior is as follows:
+       If  either the -a or the -m option (or one of their long-format equiva‐
+       lents) is specified, the behavior is as follows:
 
        --all-locales
-       -a     Display a list of all available locales.  The -v option causes the LC_IDENTIFICATION metadata about each locale to be included in the output.
+       -a     Display a list of all available locales.  The -v  option  causes
+              the  LC_IDENTIFICATION metadata about each locale to be included
+              in the output.
 
        --charmaps
-       -m     Display the available charmaps (character set description files).  To display the current character set for the locale, use locale -c charmap.
+       -m     Display  the  available  charmaps  (character  set   description
+              files).   To  display  the current character set for the locale,
+              use locale -c charmap.
 
-       The locale command can also be provided with one or more arguments, which are the names of locale keywords (for example, date_fmt, ctype-class-names, yesexpr, or  decimal_point)  or  locale  cate‐
-       gories (for example, LC_CTYPE or LC_TIME).  For each argument, the following is displayed:
+       The locale command can also be provided with  one  or  more  arguments,
+       which  are  the  names  of  locale  keywords  (for  example,  date_fmt,
+       ctype-class-names, yesexpr, or decimal_point) or locale categories (for
+       example, LC_CTYPE or LC_TIME).  For each  argument,  the  following  is
+       displayed:
 
        •  For a locale keyword, the value of that keyword to be displayed.
 
-       •  For a locale category, the values of all keywords in that category are displayed.
+       •  For  a  locale category, the values of all keywords in that category
+          are displayed.
 
        When arguments are supplied, the following options are meaningful:
 
        --category-name
-       -c     For a category name argument, write the name of the locale category on a separate line preceding the list of keyword values for that category.
+       -c     For a category name argument, write the name of the locale cate‐
+              gory on a separate line preceding the list of keyword values for
+              that category.
 
-              For a keyword name argument, write the name of the locale category for this keyword on a separate line preceding the keyword value.
+              For a keyword name argument, write the name of the locale  cate‐
+              gory  for  this keyword on a separate line preceding the keyword
+              value.
 
-              This option improves readability when multiple name arguments are specified.  It can be combined with the -k option.
+              This option improves readability when  multiple  name  arguments
+              are specified.  It can be combined with the -k option.
 
        --keyword-name
-       -k     For each keyword whose value is being displayed, include also the name of that keyword, so that the output has the format:
+       -k     For  each  keyword  whose value is being displayed, include also
+              the name of that keyword, so that the output has the format:
 
                   keyword="value"
 
        The locale command also knows about the following options:
 
        --verbose
-       -v     Display additional information for some command-line option and argument combinations.
+       -v     Display additional information for some command-line option  and
+              argument combinations.
 
        --help
-       -?     Display a summary of command-line options and arguments and exit.
+       -?     Display  a  summary  of  command-line  options and arguments and
+              exit.
 
        --usage
               Display a short usage message and exit.
@@ -112,8 +133,11 @@ EXAMPLES
        int_prefix="1"
        telephone-codeset="UTF-8"
 
-       The  following  example  compiles a custom locale from the ./wrk directory with the localedef(1) utility under the $HOME/.locale directory, then tests the result with the date(1) command, and then
-       sets the environment variables LOCPATH and LANG in the shell profile file so that the custom locale will be used in the subsequent user sessions:
+       The following example compiles a custom locale from the ./wrk directory
+       with the localedef(1) utility under the $HOME/.locale  directory,  then
+       tests  the  result with the date(1) command, and then sets the environ‐
+       ment variables LOCPATH and LANG in the shell profile file so  that  the
+       custom locale will be used in the subsequent user sessions:
 
        $ mkdir -p $HOME/.locale
        $ I18NPATH=./wrk/ localedef -f UTF-8 -i fi_SE $HOME/.locale/fi_SE.UTF-8
@@ -124,4 +148,4 @@ EXAMPLES
 SEE ALSO
        localedef(1), charmap(5), locale(5), locale(7)
 
-Linux man-pages 6.7                                                                              2023-10-31                                                                                       locale(1)
+Linux man-pages 6.7               2023-10-31                         locale(1)

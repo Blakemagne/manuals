@@ -27,9 +27,32 @@ def generate_page(from_path, template_path, dest_path):
     node = markdown_to_html_node(markdown_content)
     html = node.to_html()
 
+    # Check if this is a manual page (sexy_*.md files)
+    filename = Path(from_path).name
+    if filename.startswith('sexy_'):
+        html = f'<div class="manual-content">{html}</div>'
+
     title = extract_title(markdown_content)
+    
+    # Determine relative path depth for CSS and home links
+    dest_path_obj = Path(dest_path)
+    # Count how deep we are from the docs root
+    relative_depth = len(dest_path_obj.relative_to(Path(dest_path_obj.parts[0])).parts) - 1
+    
+    if relative_depth > 0:
+        # We're in a subdirectory, so use ../
+        css_path = "../index.css"
+        home_path = "../index.html"
+    else:
+        # We're in the root, use relative paths
+        css_path = "./index.css"
+        home_path = "./index.html"
+    
+    # Replace template variables
     template = template.replace("{{ Title }}", title)
     template = template.replace("{{ Content }}", html)
+    template = template.replace("./index.css", css_path)
+    template = template.replace("./index.html", home_path)
 
     dest_dir_path = os.path.dirname(dest_path)
     if dest_dir_path != "":

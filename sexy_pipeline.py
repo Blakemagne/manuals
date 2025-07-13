@@ -41,20 +41,7 @@ def main():
     if not run_command("python3 sexy_formatter.py", "Formatting manuals to sexy markdown"):
         sys.exit(1)
     
-    # Step 2: Auto-steal missing referenced manuals (with timeout)
-    print("🔄 Auto-stealing missing referenced manuals...")
-    try:
-        result = subprocess.run("python3 auto_steal.py", shell=True, capture_output=True, text=True, timeout=60)
-        if result.returncode == 0:
-            print("✅ Auto-steal completed")
-        else:
-            print("⚠️  Warning: Auto-steal had issues, continuing anyway...")
-    except subprocess.TimeoutExpired:
-        print("⚠️  Warning: Auto-steal timed out (60s), continuing anyway...")
-    except Exception as e:
-        print(f"⚠️  Warning: Auto-steal failed ({e}), continuing anyway...")
-    
-    # Step 3: Copy all sexy markdown files to site content
+    # Step 2: Copy all sexy markdown files to site content
     print("🔄 Copying sexy markdown to site content...")
     sexy_files = list(Path("sexy_md").glob("sexy_*.md"))
     if not sexy_files:
@@ -65,37 +52,19 @@ def main():
         shutil.copy2(file, "public/content/")
     print(f"✅ Copied {len(sexy_files)} sexy markdown files")
     
-    # Step 4: Organize content before HTML generation
-    if not run_command("python3 organize_manuals.py", "Organizing content structure"):
-        print("⚠️  Warning: Organization failed, continuing...")
-    
-    # Step 5: Generate HTML with organized structure
-    print("🔄 Generating HTML with organized structure...")
+    # Step 3: Generate HTML
+    print("🔄 Generating HTML...")
     original_dir = os.getcwd()
     try:
         os.chdir("public")
-        if not run_command("python3 src/main.py", "Generating organized HTML"):
+        if not run_command("python3 src/main.py", "Generating HTML"):
             sys.exit(1)
     finally:
         os.chdir(original_dir)
     
-    # Step 7: Count final files and categories
-    docs_files = list(Path("docs").rglob("*.html"))
-    docs_dir = Path("docs")
-    categories = len([d for d in docs_dir.iterdir() if d.is_dir() and d.name not in ['.git', '__pycache__']]) if docs_dir.exists() else 0
-    
-    # Also count from the organize_manuals output if available
-    if categories == 0:
-        # Fallback: count unique category prefixes in organized files
-        category_dirs = set()
-        for html_file in docs_files:
-            if '/' in str(html_file.relative_to(docs_dir)):
-                category = str(html_file.relative_to(docs_dir)).split('/')[0]
-                if category != 'docs':
-                    category_dirs.add(category)
-        categories = len(category_dirs)
-    
-    print(f"✅ Generated {len(docs_files)} HTML files organized into {categories} categories")
+    # Step 4: Count final files
+    docs_files = list(Path("docs").glob("*.html"))
+    print(f"✅ Generated {len(docs_files)} HTML files")
     
     print("=" * 50)
     print("🎉 Sexy Pipeline Complete!")

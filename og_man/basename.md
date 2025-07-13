@@ -1,4 +1,4 @@
-BASENAME(1)                                                                                    User Commands                                                                                    BASENAME(1)
+BASENAME(1)                      User Commands                     BASENAME(1)
 
 NAME
        basename - strip directory and suffix from filenames
@@ -8,9 +8,11 @@ SYNOPSIS
        basename OPTION... NAME...
 
 DESCRIPTION
-       Print NAME with any leading directory components removed.  If specified, also remove a trailing SUFFIX.
+       Print  NAME  with  any leading directory components removed.  If speci‐
+       fied, also remove a trailing SUFFIX.
 
-       Mandatory arguments to long options are mandatory for short options too.
+       Mandatory arguments to long options are  mandatory  for  short  options
+       too.
 
        -a, --multiple
               support multiple arguments and treat each as a NAME
@@ -47,8 +49,10 @@ REPORTING BUGS
        Report any translation bugs to <https://translationproject.org/team/>
 
 COPYRIGHT
-       Copyright © 2023 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
-       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+       Copyright  ©  2023  Free Software Foundation, Inc.  License GPLv3+: GNU
+       GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+       This is free software: you are free  to  change  and  redistribute  it.
+       There is NO WARRANTY, to the extent permitted by law.
 
 SEE ALSO
        dirname(1), readlink(1)
@@ -56,4 +60,4 @@ SEE ALSO
        Full documentation <https://www.gnu.org/software/coreutils/basename>
        or available locally via: info '(coreutils) basename invocation'
 
-GNU coreutils 9.4                                                                                April 2024                                                                                     BASENAME(1)
+GNU coreutils 9.4                 April 2024                       BASENAME(1)

@@ -1,4 +1,4 @@
-TTY(1)                                                                                         User Commands                                                                                         TTY(1)
+TTY(1)                           User Commands                          TTY(1)
 
 NAME
        tty - print the file name of the terminal connected to standard input
@@ -25,11 +25,13 @@ REPORTING BUGS
        Report any translation bugs to <https://translationproject.org/team/>
 
 COPYRIGHT
-       Copyright © 2023 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
-       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+       Copyright  ©  2023  Free Software Foundation, Inc.  License GPLv3+: GNU
+       GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+       This is free software: you are free  to  change  and  redistribute  it.
+       There is NO WARRANTY, to the extent permitted by law.
 
 SEE ALSO
        Full documentation <https://www.gnu.org/software/coreutils/tty>
        or available locally via: info '(coreutils) tty invocation'
 
-GNU coreutils 9.4                                                                                April 2024                                                                                          TTY(1)
+GNU coreutils 9.4                 April 2024                            TTY(1)
