@@ -1,0 +1,156 @@
+body {
+  background-color: #1f1c25;
+  color: #f0e6d1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  margin: 0;
+  padding: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+b {
+  font-weight: 900;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #dda15e;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1.2em;
+}
+
+a {
+  color: #e0a96d;
+  text-decoration: none;
+  border-bottom: 2px solid #e0a96d;
+}
+
+a:hover {
+  color: #f4a261;
+  border-color: #f4a261;
+}
+
+ul,
+ol {
+  padding-left: 30px;
+}
+
+code {
+  background-color: #3c3c42;
+  border-radius: 6px;
+  color: #e9c46a;
+  padding: 0.4em 0.6em;
+  font-family: "Courier New", monospace;
+}
+
+pre code {
+  padding: 0;
+}
+
+pre {
+  background-color: #3c3c42;
+  border-radius: 6px;
+  padding: 1em;
+  overflow: auto;
+  box-shadow: 2px 2px 6px #000;
+}
+
+blockquote {
+  background-color: #2e2c35;
+  border-left: 4px solid #8d99ae;
+  padding-left: 2em;
+  margin-left: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+  color: #ddd;
+  font-style: italic;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 3px solid #3c3c42;
+  box-shadow: 3px 3px 6px #000;
+}
+
+/* Manual page specific styles */
+article {
+  position: relative;
+}
+
+/* Table of contents styling */
+h2[id="table-of-contents"] + ul {
+  background-color: #2e2c35;
+  border-radius: 8px;
+  padding: 1.5em;
+  margin: 1em 0 2em 0;
+  border-left: 4px solid #dda15e;
+}
+
+/* Enhanced code styling for options */
+strong code {
+  background-color: #2d4a2b;
+  color: #7ec699;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  border: 1px solid #4a7c59;
+}
+
+/* Section anchors */
+h2[id], h3[id] {
+  scroll-margin-top: 20px;
+}
+
+/* Improve readability for long content */
+p {
+  margin-bottom: 1em;
+}
+
+/* Better spacing for lists in manual pages */
+li {
+  margin-bottom: 0.5em;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    max-width: 100%;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+}
