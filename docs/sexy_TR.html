@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> 📚 TR Manual </title>
+    <link href="./index.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="nav-header">
+        <a href="./index.html" class="home-button">🏠 Home</a>
+    </header>
+    <article>
+        <div><h1>📚 TR Manual</h1><blockquote>*Beautiful, readable documentation for command-line tools*</blockquote><hr></hr><p>[<a href="./TR.html">TR(1)</a>](TR.html)                                                                                          User Commands                                                                                          [<a href="./TR.html">TR(1)</a>](TR.html)</p><h2>📑 Table of Contents</h2><p>- <a href="#name">Name</a>   - <a href="#library">Library</a> - <a href="#synopsis">Synopsis</a> - <a href="#description">Description</a>   - <a href="#return-value">Return Value</a>   - <a href="#errors">Errors</a>   - <a href="#standards">Standards</a>   - <a href="#history">History</a> - <a href="#examples">Examples</a> - <a href="#see-also">See Also</a> - <a href="#name">Name</a>   - <a href="#library">Library</a> - <a href="#synopsis">Synopsis</a> - <a href="#description">Description</a>   - <a href="#return-value">Return Value</a>   - <a href="#errors">Errors</a>   - <a href="#standards">Standards</a>   - <a href="#history">History</a>   - <a href="#notes">Notes</a>   - <a href="#bugs">Bugs</a> - <a href="#see-also">See Also</a> - <a href="#name">Name</a>   - <a href="#library">Library</a> - <a href="#synopsis">Synopsis</a> - <a href="#description">Description</a>   - <a href="#return-value">Return Value</a>   - <a href="#errors">Errors</a>   - <a href="#versions">Versions</a>   - <a href="#standards">Standards</a>   - <a href="#history">History</a>   - <a href="#notes">Notes</a>   - <a href="#bugs">Bugs</a> - <a href="#see-also">See Also</a> - <a href="#name">Name</a> - <a href="#synopsis">Synopsis</a> - <a href="#description">Description</a>   - <a href="#bugs">Bugs</a>   - <a href="#author">Author</a>   - <a href="#reporting-bugs">Reporting Bugs</a>   - <a href="#copyright">Copyright</a> - <a href="#see-also">See Also</a></p><h2 id="name">Name</h2><pre><code>tr - translate or delete characters
+</code></pre><h2 id="synopsis">Synopsis</h2><pre><code>tr [OPTION]... STRING1 [STRING2]
+</code></pre><h2 id="description">Description</h2><pre><code>Translate, squeeze, and/or delete characters from standard input, writing to standard output.  STRING1 and STRING2 specify arrays of characters ARRAY1 and ARRAY2 that control the action.
+</code></pre><p><b>`-c`</b>, -C, --complement               use the complement of ARRAY1</p><p><b>`-d`</b>, --delete               delete characters in ARRAY1, do not translate</p><p><b>`-s`</b>, --squeeze-repeats               replace each sequence of a repeated character that is listed in the last specified ARRAY, with a single occurrence of that character</p><p><b>`-t`</b>, --truncate-set1               first truncate ARRAY1 to length of ARRAY2</p><p><b>`--help display`</b> this help and exit</p><p><b>`--version`</b>               output version information and exit</p><p>` ARRAYs are specified as strings of characters.  Most represent themselves.  Interpreted sequences are:</p><p>\NNN   character with octal value NNN (1 to 3 octal digits)</p><p>\\     backslash</p><p>\a     audible BEL</p><p>\b     backspace</p><p>\f     form feed</p><p>\n     new line</p><p>\r     return</p><p>\t     horizontal tab</p><p>\v     vertical tab</p><p>CHAR1-CHAR2        all characters from CHAR1 to CHAR2 in ascending order</p><p>[CHAR*]        in ARRAY2, copies of CHAR until length of ARRAY1</p><p>[CHAR*REPEAT]        REPEAT copies of CHAR, REPEAT octal if starting with 0</p><p>[:alnum:]        all letters and digits</p><p>[:alpha:]        all letters</p><p>[:blank:]        all horizontal whitespace</p><p>[:cntrl:]        all control characters</p><p>[:digit:]        all digits</p><p>[:graph:]        all printable characters, not including space</p><p>[:lower:]        all lower case letters</p><p>[:print:]        all printable characters, including space</p><p>[:punct:]        all punctuation characters</p><p>[:space:]        all horizontal or vertical whitespace</p><p>[:upper:]        all upper case letters</p><p>[:xdigit:]        all hexadecimal digits</p><p>[=CHAR=]        all characters which are equivalent to CHAR</p><p>Translation occurs if -d is not given and both STRING1 and STRING2 appear.  -t is only significant when translating.  ARRAY2 is extended to length of ARRAY1 by repeating its last character as nec‐ essary.   Excess  characters  of  ARRAY2  are  ignored.   Character classes expand in unspecified order; while translating, [:lower:] and [:upper:] may be used in pairs to specify case conversion. Squeezing occurs after translation or deletion. `</p><h3 id="bugs">Bugs</h3><pre><code>Full support is available only for safe single-byte locales, in which every possible input byte represents a single character.  The C locale is safe in GNU systems, so you can avoid this issue  in
+the shell by running LC_ALL=C tr instead of plain tr.
+</code></pre><h3 id="author">Author</h3><pre><code>Written by Jim Meyering.
+</code></pre><h3 id="reporting-bugs">Reporting Bugs</h3><pre><code>GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report any translation bugs to <https://translationproject.org/team/>
+</code></pre><h3 id="copyright">Copyright</h3><pre><code>Copyright © 2023 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+</code></pre><h2 id="see-also">See Also</h2><pre><code>Full documentation <https://www.gnu.org/software/coreutils/tr>
+or available locally via: info '(coreutils) tr invocation'
+</code></pre><p>GNU coreutils 9.4                                                                                April 2024                                                                                           [<a href="./TR.html">TR(1)</a>](TR.html)</p></div>
+    </article>
+</body>
+
+</html>

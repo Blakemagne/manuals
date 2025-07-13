@@ -264,10 +264,10 @@ def organize_manuals():
         
         print(f"📂 Creating {category}/ with {len(files)} manuals")
         
-        # Move files to category directory
+        # Copy files to category directory (don't move - keep originals)
         for file in files:
             new_path = category_dir / file.name
-            shutil.move(str(file), str(new_path))
+            shutil.copy2(str(file), str(new_path))
         
         # Create category index
         if category in MANUAL_CATEGORIES:
@@ -298,7 +298,7 @@ def update_main_index(categorized_files):
         print("⚠️  Warning: main index.md not found, skipping update")
         return
     
-    # Create new organized index content
+    # Create new organized index content with card layout
     content = """# Sexy Shell Manuals
 
 Beautiful, readable documentation for command-line tools organized by category.
@@ -307,9 +307,10 @@ Making shell documentation sexy, one manual at a time.
 
 ## Browse by Category
 
+<div class="category-grid">
 """
     
-    # Add category links
+    # Add category cards
     for category, files in sorted(categorized_files.items()):
         if category in MANUAL_CATEGORIES:
             description = MANUAL_CATEGORIES[category]['description']
@@ -321,18 +322,29 @@ Making shell documentation sexy, one manual at a time.
                 'development': '💻',
                 'shell': '🐚',
                 'archive': '📦',
-                'media': '🎬'
+                'media': '🎬',
+                'documentation': '📖',
+                'security': '🔒',
+                'database': '🗄️',
+                'monitoring': '📊',
+                'virtualization': '🐳',
+                'package': '📦'
             }.get(category, '📚')
         else:
             description = "Miscellaneous Tools"
             icon = '📚'
             
-        content += f"### {icon} [{description}](./{category}/index.html)\n"
-        content += f"{len(files)} manuals available\n\n"
+        content += f"""<div class="category-card">
+### {icon} [{description}](./{category}/index.html)
+{len(files)} manuals available
+</div>
+"""
     
-    content += f"""---
-
-**📋 Total: {sum(len(files) for files in categorized_files.values())} manuals available!**
+    content += "</div>\n\n"
+    
+    content += f"""<div class="stats">
+**📋 {sum(len(files) for files in categorized_files.values())} manuals available!**
+</div>
 
 ## About This Project
 
@@ -342,22 +354,26 @@ Transform boring Unix/Linux manual pages into beautiful, readable documentation 
 
 We take traditional manual pages and make them sexy:
 
-1. Steal a manual page using fip/fop
-2. Format to enhanced markdown with our sexy formatter
-3. Generate beautiful HTML with our static site generator
-4. Organize into logical categories for easy browsing
+1. **Steal** a manual page using fip/fop
+2. **Format** to enhanced markdown with our sexy formatter  
+3. **Generate** beautiful HTML with our static site generator
+4. **Organize** into logical categories for easy browsing
 
 No more ugly, hard-to-navigate shell manuals!
 
 ## Features
 
-- Clean, dark theme optimized for readability
-- Enhanced option formatting with syntax highlighting
-- Mobile-responsive design
-- Fast, lightweight pages
-- Intelligent categorization by functionality
+- 🎨 **Vercel-inspired design** - Modern, clean interface
+- 🌙 **Dark theme optimized** for readability
+- 📱 **Mobile-responsive** - Beautiful on any device
+- ⚡ **Fast, lightweight** pages
+- 🔗 **Smart cross-references** - Manual links that actually work
+- 🏠 **Easy navigation** - Home button on every page
+- 📁 **Intelligent categorization** by functionality
 
-This site was generated from markdown using a custom static site generator.
+---
+
+*This site was generated from markdown using a custom static site generator.*
 """
     
     # Write updated index
