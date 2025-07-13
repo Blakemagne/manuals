@@ -1,0 +1,679 @@
+# 📚 SETREUID, Manual
+
+> *Beautiful, readable documentation for command-line tools*
+
+---
+
+[setreuid(2)](setreuid.html)                                                                                 System Calls Manual                                                                                 [setreuid(2)](setreuid.html)
+
+
+## 📑 Table of Contents
+
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001.](#posix.1-2001.)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+- [Authors](#authors)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+  - [Target](#target)
+- [Description](#description)
+- [Options](#options)
+- [See Also](#see-also)
+  - [Copyright](#copyright)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Environment](#environment)
+- [Files](#files)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Exit Status](#exit-status)
+- [Environment](#environment)
+- [Files](#files)
+- [See Also](#see-also)
+  - [History](#history)
+  - [Bugs](#bugs)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [C11, Posix.1-2008.](#c11,-posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Seccomp_Ret_Errno](#seccomp_ret_errno)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Exit Status](#exit-status)
+- [Environment](#environment)
+- [Files](#files)
+  - [Notes](#notes)
+  - [Nfs](#nfs)
+  - [History](#history)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Exit Codes](#exit-codes)
+- [See Also](#see-also)
+- [Examples](#examples)
+- [Authors](#authors)
+  - [Copyright](#copyright)
+  - [Notes](#notes)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Exit Codes](#exit-codes)
+- [Files](#files)
+- [Environment](#environment)
+  - [Lang, Language, Lc_Ctype, Lc_Numeric, Lc_Time, Lc_Collate, Lc_Monetary, Lc_Messages, Lc_Paper, Lc_Name, Lc_Address, Lc_Telephone, Lc_Measurement, Lc_Identification, Lc_All, Term, Path](#lang,-language,-lc_ctype,-lc_numeric,-lc_time,-lc_collate,-lc_monetary,-lc_messages,-lc_paper,-lc_name,-lc_address,-lc_telephone,-lc_measurement,-lc_identification,-lc_all,-term,-path)
+- [See Also](#see-also)
+  - [Author](#author)
+  - [Copyright](#copyright)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Parsing](#parsing)
+  - [Output](#output)
+  - [Quoting](#quoting)
+  - [Scanning Modes](#scanning-modes)
+  - [Compatibility](#compatibility)
+  - [Return Codes](#return-codes)
+- [Examples](#examples)
+- [Environment](#environment)
+  - [Posixly_Correct](#posixly_correct)
+  - [Getopt_Compatible](#getopt_compatible)
+  - [Bugs](#bugs)
+  - [Author](#author)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Interactive Commands](#interactive-commands)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+- [Files](#files)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Examples](#examples)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [O_Noctty](#o_noctty)
+  - [O_Nofollow](#o_nofollow)
+  - [O_Trunc](#o_trunc)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Nfs](#nfs)
+  - [O_Direct](#o_direct)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Description](#description)
+  - [Notes](#notes)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+- [Files](#files)
+  - [Exit Values](#exit-values)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Compatibility](#compatibility)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Availability](#availability)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Options](#options)
+  - [Caveats](#caveats)
+  - [Configuration](#configuration)
+- [Files](#files)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Posix.1-2001.](#posix.1-2001.)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Nfs](#nfs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Eaddrnotavail](#eaddrnotavail)
+  - [Eaddrnotavail](#eaddrnotavail)
+  - [Standards](#standards)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Author](#author)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Copyright](#copyright)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Bugs](#bugs)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+- [Name](#name)
+- [Synopsis](#synopsis)
+- [Description](#description)
+- [Files](#files)
+- [Examples](#examples)
+- [See Also](#see-also)
+- [Authors](#authors)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [O_Noctty](#o_noctty)
+  - [O_Nofollow](#o_nofollow)
+  - [O_Trunc](#o_trunc)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Nfs](#nfs)
+  - [O_Direct](#o_direct)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Attributes](#attributes)
+  - [Versions](#versions)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [History](#history)
+  - [Notes](#notes)
+  - [Bugs](#bugs)
+- [See Also](#see-also)
+- [Name](#name)
+  - [Library](#library)
+- [Synopsis](#synopsis)
+- [Description](#description)
+  - [Return Value](#return-value)
+  - [Errors](#errors)
+  - [Versions](#versions)
+  - [Standards](#standards)
+  - [Posix.1-2008.](#posix.1-2008.)
+  - [History](#history)
+- [See Also](#see-also)
+
+
+## Name {#name}
+
+```
+setreuid, setregid - set real and/or effective user or group ID
+```
+
+
+
+### Library {#library}
+
+```
+Standard C library (libc, -lc)
+```
+
+
+
+## Synopsis {#synopsis}
+
+```
+#include <unistd.h>
+
+int setreuid(uid_t ruid, uid_t euid);
+int setregid(gid_t rgid, gid_t egid);
+```
+
+
+   Feature Test Macro Requirements for glibc (see [feature_test_macros(7)](feature_test_macros.html)):
+
+```
+setreuid(), setregid():
+    _XOPEN_SOURCE >= 500
+        || /* Since glibc 2.19: */ _DEFAULT_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE
+```
+
+
+
+## Description {#description}
+
+```
+setreuid() sets real and effective user IDs of the calling process.
+
+Supplying a value of -1 for either the real or effective user ID forces the system to leave that ID unchanged.
+
+Unprivileged processes may only set the effective user ID to the real user ID, the effective user ID, or the saved set-user-ID.
+
+Unprivileged users may only set the real user ID to the real user ID or the effective user ID.
+
+If the real user ID is set (i.e., ruid is not -1) or the effective user ID is set to a value not equal to the previous real user ID, the saved set-user-ID will be set to the new effective user ID.
+
+Completely analogously, setregid() sets real and effective group ID's of the calling process, and all of the above holds with "group" instead of "user".
+```
+
+
+
+### Return Value {#return-value}
+
+```
+On success, zero is returned.  On error, -1 is returned, and errno is set to indicate the error.
+
+Note: there are cases where setreuid() can fail even when the caller is UID 0; it is a grave security error to omit checking for a failure return from setreuid().
+```
+
+
+
+### Errors {#errors}
+
+```
+EAGAIN The call would change the caller's real UID (i.e., ruid does not match the caller's real UID), but there was a temporary failure allocating the necessary kernel data structures.
+
+EAGAIN ruid  does  not  match the caller's real UID and this call would bring the number of processes belonging to the real user ID ruid over the caller's RLIMIT_NPROC resource limit.  Since Linux
+       3.1, this error case no longer occurs (but robust applications should check for this error); see the description of EAGAIN in execve(2).
+
+EINVAL One or more of the target user or group IDs is not valid in this user namespace.
+
+EPERM  The calling process is not privileged (on Linux, does not have the necessary capability in its user namespace: CAP_SETUID in the case of setreuid(), or CAP_SETGID in the case of setregid())
+       and a change other than (i) swapping the effective user (group) ID with the real user (group) ID, or (ii) setting one to the value of the other or (iii) setting the effective  user  (group)
+       ID to the value of the saved set-user-ID (saved set-group-ID) was specified.
+```
+
+
+
+### Versions {#versions}
+
+```
+POSIX.1  does  not  specify all of the UID changes that Linux permits for an unprivileged process.  For setreuid(), the effective user ID can be made the same as the real user ID or the saved set-
+user-ID, and it is unspecified whether unprivileged processes may set the real user ID to the real user ID, the effective user ID, or the saved set-user-ID.  For setregid(), the real group ID  can
+be  changed  to  the value of the saved set-group-ID, and the effective group ID can be changed to the value of the real group ID or the saved set-group-ID.  The precise details of what ID changes
+are permitted vary across implementations.
+
+POSIX.1 makes no specification about the effect of these calls on the saved set-user-ID and saved set-group-ID.
+```
+
+
+
+### Standards {#standards}
+
+
+### Posix.1-2008. {#posix.1-2008.}
+
+
+
+### History {#history}
+
+```
+POSIX.1-2001, 4.3BSD (first appeared in 4.2BSD).
+
+Setting the effective user (group) ID to the saved set-user-ID (saved set-group-ID) is possible since Linux 1.1.37 (1.1.38).
+
+The original Linux setreuid() and setregid() system calls supported only 16-bit user and group IDs.  Subsequently, Linux 2.4 added setreuid32() and setregid32(), supporting 32-bit IDs.  The  glibc
+setreuid() and setregid() wrapper functions transparently deal with the variations across kernel versions.
+```
+
+
+   C library/kernel differences
+```
+At  the  kernel level, user IDs and group IDs are a per-thread attribute.  However, POSIX requires that all threads in a process share the same credentials.  The NPTL threading implementation han‐
+dles the POSIX requirements by providing wrapper functions for the various system calls that change process UIDs and GIDs.  These wrapper functions (including those for setreuid() and  setregid())
+employ a signal-based technique to ensure that when one thread changes credentials, all of the other threads in the process also change their credentials.  For details, see nptl(7).
+```
+
+
+
+## See Also {#see-also}
+
+```
+getgid(2), getuid(2), seteuid(2), setgid(2), setresuid(2), setuid(2), capabilities(7), credentials(7), user_namespaces(7)
+```
+
+
+Linux man-pages 6.7                                                                              2023-10-31                                                                                     [setreuid(2)](setreuid.html)

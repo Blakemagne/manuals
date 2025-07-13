@@ -35,24 +35,31 @@ og_man/           →    sexy_md/           →    sexy_html/
 
 ## Complete Workflow
 
-### Adding a New Manual
+### One-Command Pipeline
+
+```bash
+# Complete pipeline: stolen manual → deployed HTML
+python3 sexy_pipeline.py
+```
+
+This single command runs the entire workflow:
+1. Formats all manuals in `og_man/` to sexy markdown
+2. Auto-steals missing referenced manuals
+3. Copies sexy markdown to site content
+4. Generates HTML with static site generator
+5. Reports completion and next steps
+
+### Manual Process (if needed)
 
 ```bash
 # 1. Steal a manual page directly from man
 man git | fip
 fop > og_man/git.md
 
-# 2. Format to sexy markdown
-python3 sexy_formatter.py
+# 2. Run complete pipeline
+python3 sexy_pipeline.py
 
-# 3. Auto-steal missing referenced manuals
-python3 auto_steal.py
-
-# 4. Copy to site content
-cp sexy_md/sexy_*.md public/content/
-
-# 5. Generate HTML and deploy
-cd public && python3 src/main.py
+# 3. Deploy to GitHub Pages
 git add docs/ && git commit -m "Add git manual" && git push
 ```
 
