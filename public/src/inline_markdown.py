@@ -113,26 +113,46 @@ def _parse_italic_nodes(text):
 def _parse_code_nodes(text):
     """Parse `code` text while handling unmatched backticks gracefully"""
     nodes = []
-    pattern = r'`([^`\n]*?)`'
+    
+    # First check if this is a code block line starting with ```
+    if text.strip().startswith('```'):
+        return [TextNode(text, TextType.TEXT)]
+    
+    # Pattern for inline code - more strict to avoid false positives
+    # Only match if there's non-whitespace content and it's not too long
+    pattern = r'`([^`\n]{1,60})`'
     last_end = 0
     
     for match in re.finditer(pattern, text):
+        code_text = match.group(1)
+        
+        # Skip if this looks like descriptive text with backticks
+        if any([
+            ' is a ' in code_text,
+            ' are ' in code_text,
+            ' will ' in code_text,
+            ' may ' in code_text,
+            ' the ' in code_text and len(code_text) > 20,
+            code_text.startswith('ssh ') and '(' in code_text,  # Like 'ssh (SSH client)'
+            code_text.endswith(' options'),
+            code_text.endswith(' option'),
+        ]):
+            # Skip this match - don't add anything yet
+            continue
+            
         # Add text before the match
         if match.start() > last_end:
             nodes.append(TextNode(text[last_end:match.start()], TextType.TEXT))
         
         # Add the code text
-        code_text = match.group(1)
-        if code_text:
-            nodes.append(TextNode(code_text, TextType.CODE))
-        
+        nodes.append(TextNode(code_text, TextType.CODE))
         last_end = match.end()
     
     # Add remaining text
     if last_end < len(text):
         nodes.append(TextNode(text[last_end:], TextType.TEXT))
     
-    # If no matches found, return the original text
+    # If no nodes were added, return the original text
     if not nodes:
         nodes.append(TextNode(text, TextType.TEXT))
     

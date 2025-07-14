@@ -20,8 +20,11 @@ body {
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid #333;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .home-button {
@@ -34,12 +37,139 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
-  margin-left: 2rem;
 }
 
 .home-button:hover {
   background: #0051cc;
   transform: translateY(-1px);
+}
+
+/* Header TOC Menu */
+.header-toc {
+  position: relative;
+}
+
+.toc-button {
+  display: inline-flex;
+  align-items: center;
+  background: #333;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  gap: 0.5rem;
+}
+
+.toc-button:hover {
+  background: #444;
+  transform: translateY(-1px);
+}
+
+.header-hamburger {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  transition: transform 0.3s ease;
+}
+
+.header-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: white;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.header-hamburger.active {
+  transform: rotate(90deg);
+}
+
+.header-hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.header-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.header-hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.header-toc-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid #333;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  min-width: 300px;
+  max-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.header-toc-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header-toc-dropdown h3 {
+  margin: 0 0 1rem 0;
+  color: #fafafa;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-toc-dropdown ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-toc-dropdown li {
+  margin: 0.5rem 0;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.header-toc-dropdown li::before {
+  content: "▶";
+  color: #0070f3;
+  font-size: 0.7rem;
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+}
+
+.header-toc-dropdown a {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.header-toc-dropdown a:hover {
+  color: #0070f3;
 }
 
 /* Main Content */
@@ -248,11 +378,69 @@ hr {
 .manual-content h1 {
   text-align: left;
   font-size: 2.5rem;
+  background: none;
+  -webkit-text-fill-color: unset;
+  color: #fafafa;
 }
 
 .manual-content p {
   text-align: left;
+  font-size: 1rem;
+  margin: 1rem 0;
+  line-height: 1.7;
 }
+
+/* Manual page specific styling */
+.manual-content pre {
+  background: #0d1117;
+  border: 2px solid #30363d;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 0.95rem;
+  color: #f0f6fc;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.manual-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #f0f6fc;
+  font-size: inherit;
+}
+
+.manual-content code {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 0.25rem;
+  padding: 0.2rem 0.4rem;
+  font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 0.9em;
+  color: #79c0ff;
+}
+
+/* Fix for inline code in options */
+.manual-content p code {
+  white-space: nowrap;
+}
+
+/* Headers in manual content */
+.manual-content h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #30363d;
+}
+
+.manual-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #f0f6fc;
+}
+
 
 /* Option formatting for manual pages */
 .option {

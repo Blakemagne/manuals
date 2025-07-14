@@ -1,79 +1,136 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with the Sexy Shell Manuals project.
 
-## Repository Overview
+## Project Overview
 
-This project aims to make shell manuals sexy! We're building a system that transforms traditional Unix/Linux manual pages into beautifully formatted markdown and eventually into stunning HTML pages using a static site generator.
+**Sexy Shell Manuals** transforms boring Unix/Linux manual pages into beautiful, readable documentation with enhanced formatting, better navigation, and modern styling.
 
-## Project Goal
+**Goal**: Make shell documentation sexy through automated pipeline from manual stealing to deployed HTML.
 
-Transform boring, hard-to-read manual pages into visually appealing, easy-to-navigate documentation that developers will actually want to read.
+## Core Workflow
 
-## Repository Structure (Current & Planned)
-
-```
-manuals/
-├── og_man/         # Original manual pages pasted here
-├── sexy_md/        # Enhanced markdown versions (sexy_ssh.md, sexy_tmux.md, etc.)
-├── docs/           # Generated HTML for GitHub Pages
-├── public/         # Static site generator
-└── sexy_formatter.py  # Autoformatting script
-```
-
-## Processing Pipeline
-
-1. **Input**: Original manual pages are pasted into `og_man/`
-2. **Conversion**: Automated formatting creates enhanced "sexy" markdown versions in `sexy_md/`
-   - Files will be named with `sexy_` prefix (e.g., `sexy_ssh.md`, `sexy_tmux.md`)
-3. **Generation**: Static site generator creates beautiful HTML pages in `docs/` for GitHub Pages
-
-## Current Status
-
-The existing `ssh.md` and `tmux.md` files are direct markdown copies of the original manuals. The enhanced "sexy" versions will include improved formatting, better navigation, syntax highlighting, and visual enhancements.
-
-## Working with Manual Pages
-
-### Format Convention
-Manual pages follow the traditional Unix manual page structure:
-- **NAME**: Command name and brief description
-- **SYNOPSIS**: Command syntax
-- **DESCRIPTION**: Detailed explanation
-- **OPTIONS**: Command-line options and flags
-- **EXAMPLES**: Usage examples (if provided)
-- **ENVIRONMENT**: Environment variables
-- **FILES**: Related configuration files
-- **SEE ALSO**: Related commands and documentation
-
-### Adding New Manual Pages
-When adding new manual pages to this repository:
-1. Maintain the standard manual page section structure
-2. Use consistent markdown formatting
-3. Preserve all technical details and options from the original manual
-4. Keep the filename simple: `command.md` (e.g., `ssh.md`, `tmux.md`)
-
-### Common Tasks
-
-To search within manual pages:
+### Complete Pipeline
 ```bash
-# Search for specific option or keyword
-grep -i "keyword" *.md
-
-# Find all occurrences of a command flag
-grep -E "^\s*-[a-zA-Z]" ssh.md
+# One command: stolen manual → deployed HTML
+python3 sexy_pipeline.py
 ```
 
-To view a manual page:
+### Manual Stealing Workflow  
 ```bash
-# Using less for pagination
-less tmux.md
+# Use fip/fop to steal manuals (respectful way)
+man ssh | fip
+fop > og_man/ssh.md
+```
 
-# Using your preferred markdown viewer
-# (varies by system/editor)
+## Architecture Components
+
+### 📁 Directory Structure
+- **`og_man/`** - Raw manual pages (input)
+- **`sexy_md/`** - Enhanced markdown (intermediate) 
+- **`public/`** - Static site generator
+- **`docs/`** - Generated HTML site (GitHub Pages output)
+
+### 🔧 Core Scripts
+- **`sexy_formatter.py`** - Converts raw manuals to enhanced markdown
+- **`sexy_pipeline.py`** - Orchestrates complete workflow
+- **`public/src/main.py`** - Static site generator entry point
+- **`public/src/gencontent.py`** - HTML generation logic
+
+### 🎨 Styling System
+- **Vercel-inspired dark theme** with gradient backgrounds
+- **Card-based layouts** for category organization
+- **Professional typography** with system fonts
+- **Mobile-responsive design** with breakpoints
+- **Manual-specific styling** with `.manual-content` class
+
+## Key Features
+
+### ✅ Current Features
+- 🏠 **Smart navigation** - Home button on every page
+- 🔗 **Cross-reference links** - Manual references become clickable
+- 📑 **Auto table of contents** - Generated navigation with anchors
+- 🎯 **Enhanced typography** - Professional code blocks and formatting
+- 📱 **Mobile responsive** - Beautiful on any device
+- 🏴‍☠️ **Manual stealing** - fip/fop workflow for acquiring manuals
+
+### 🎨 Design Philosophy
+Transform from ugly traditional manual format:
+```
+SSH(1)                    General Commands Manual                   SSH(1)
+NAME
+     ssh — OpenSSH remote login client
+```
+
+To beautiful modern documentation:
+```markdown
+# 📚 SSH Manual
+> *Beautiful, readable documentation for command-line tools*
+
+## Name
+ssh — OpenSSH remote login client
+```
+
+## Development Commands
+
+### Generate HTML from Current Content
+```bash
+# From public/ directory
+python3 src/main.py
+```
+
+### Complete Pipeline
+```bash
+# From project root
+python3 sexy_pipeline.py
+```
+
+### Manual Content Generation
+```bash
+# Format raw manuals to sexy markdown
+python3 sexy_formatter.py
 ```
 
 ## Important Notes
 
-- This is a documentation-only repository - no executable code or scripts
-- Manual pages are for reference and should not be modified unless updating to newer versions
-- When referencing content, include the specific section (e.g., "See SSH OPTIONS section")
+### File Organization
+- Manual pages automatically organized into categories (Network, Shell, etc.)
+- Category pages generated with proper navigation
+- Manual content wrapped in `.manual-content` class for styling
+
+### CSS Structure
+- **Base styles** for homepage layout
+- **Manual-specific styles** for content formatting  
+- **Category card layouts** with hover effects
+- **Responsive typography** for all device sizes
+
+### Deployment
+- HTML output goes to `docs/` directory
+- GitHub Pages serves from `docs/`
+- CSS and navigation use relative paths for subdirectories
+
+## Development Workflow
+
+1. **Add new manuals** to `og_man/` directory
+2. **Run sexy_pipeline.py** to process everything
+3. **Check output** in `docs/` directory
+4. **Commit and push** to deploy via GitHub Pages
+
+### fip/fop Usage
+- **fip** = "file in place" (pipe manual content)
+- **fop** = "file out place" (output to file)
+- This is the respectful way to steal manuals
+
+## Code Style
+
+- **Simple, focused scripts** - Each component has single responsibility
+- **Professional markdown parsing** - Handles complex formatting without breaking
+- **Modern CSS patterns** - Uses CSS Grid, Flexbox, and custom properties
+- **Consistent naming** - `sexy_*.md` for formatted manuals, clear component names
+
+## Testing
+
+- **Visual testing** - Check generated HTML in browser
+- **Manual testing** - Verify links work, navigation functions
+- **Responsive testing** - Check mobile layouts
+- **No formal test framework** - Simple validation scripts only

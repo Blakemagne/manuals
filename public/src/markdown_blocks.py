@@ -16,14 +16,50 @@ class BlockType(Enum):
 
 
 def markdown_to_blocks(markdown):
-    blocks = markdown.split("\n\n")
+    """Split markdown into blocks, preserving code blocks that contain empty lines."""
+    # Use a simple approach: split on \n\n, then merge broken code blocks
+    raw_blocks = markdown.split('\n\n')
     filtered_blocks = []
-    for block in blocks:
-        if block == "":
+    
+    for block in raw_blocks:
+        stripped_block = block.strip()
+        if stripped_block == '' or stripped_block == '#':
             continue
-        block = block.strip()
-        filtered_blocks.append(block)
-    return filtered_blocks
+        filtered_blocks.append(stripped_block)
+    
+    # Now merge broken code blocks
+    merged_blocks = []
+    i = 0
+    while i < len(filtered_blocks):
+        block = filtered_blocks[i]
+        
+        # Check if this block starts with ``` but doesn't end with ```
+        lines = block.split('\n')
+        if (len(lines) > 0 and lines[0].strip().startswith('```') and 
+            not any(line.strip().startswith('```') for line in lines[1:])):
+            
+            # This is a broken code block start, find the end
+            merged_block = block
+            j = i + 1
+            
+            while j < len(filtered_blocks):
+                next_block = filtered_blocks[j]
+                merged_block += '\n\n' + next_block
+                
+                # Check if this block ends with ```
+                next_lines = next_block.split('\n')
+                if any(line.strip().startswith('```') for line in next_lines):
+                    # Found the end
+                    break
+                j += 1
+            
+            merged_blocks.append(merged_block)
+            i = j + 1
+        else:
+            merged_blocks.append(block)
+            i += 1
+    
+    return merged_blocks
 
 
 def block_to_block_type(block):
@@ -44,8 +80,10 @@ def block_to_block_type(block):
                 return BlockType.PARAGRAPH
         return BlockType.QUOTE
     if block.startswith("- "):
+        import re
         for line in lines:
-            if not line.startswith("- "):
+            # Allow lines that start with optional whitespace followed by "- "
+            if not re.match(r'^\s*- ', line):
                 return BlockType.PARAGRAPH
         return BlockType.ULIST
     if block.startswith("1. "):
@@ -129,7 +167,14 @@ def heading_to_html_node(block):
 def code_to_html_node(block):
     if not block.startswith("```") or not block.endswith("```"):
         raise ValueError("invalid code block")
-    text = block[4:-3]
+    # Remove first line if it's just ``` and last line if it's just ```
+    lines = block.split('\n')
+    if lines[0].strip() == '```':
+        lines = lines[1:]
+    if lines and lines[-1].strip() == '```':
+        lines = lines[:-1]
+    text = '\n'.join(lines)
+    
     raw_text_node = TextNode(text, TextType.TEXT)
     child = text_node_to_html_node(raw_text_node)
     code = ParentNode("code", [child])
@@ -147,12 +192,18 @@ def olist_to_html_node(block):
 
 
 def ulist_to_html_node(block):
+    import re
     items = block.split("\n")
     html_items = []
     for item in items:
-        text = item[2:]
-        children = text_to_children(text)
-        html_items.append(ParentNode("li", children))
+        # Use regex to find and remove the list marker (optional whitespace + "- ")
+        match = re.match(r'^(\s*)- (.*)$', item)
+        if match:
+            indentation, text = match.groups()
+            children = text_to_children(text)
+            # For now, we'll flatten the list structure and ignore indentation levels
+            # A more complex implementation could create nested <ul> structures
+            html_items.append(ParentNode("li", children))
     return ParentNode("ul", html_items)
 
 

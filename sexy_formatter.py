@@ -34,8 +34,13 @@ class SexyFormatter:
         # Add header
         result.extend(self.add_header(lines))
         
+        # Skip the first line if it looks like a manual header
+        start_index = 0
+        if lines and lines[0].strip().endswith('Manual') and '(' in lines[0]:
+            start_index = 1
+        
         # Process line by line
-        i = 0
+        i = start_index
         while i < len(lines):
             line = lines[i]
             
@@ -168,8 +173,8 @@ class SexyFormatter:
         # Get the rest of the line (description start)
         desc_start = line[len(option_match.group(0)):]
         
-        # Format the option
-        result.append(f"{indent}**`{option}`**{desc_start}")
+        # Format the option - use just code formatting, not bold+code
+        result.append(f"{indent}`{option}`{desc_start}")
         
         # Collect continuation lines (indented more than the option)
         i = index + 1

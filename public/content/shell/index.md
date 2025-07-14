@@ -8,7 +8,3 @@
 
 
 ---
-
-[🏠 Back to Home](../index.html)
-
-*Part of the Sexy Shell Manuals collection*

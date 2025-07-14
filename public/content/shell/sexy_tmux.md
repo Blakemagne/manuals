@@ -4,9 +4,6 @@
 
 ---
 
-[TMUX(1)](TMUX.html)                     General Commands Manual                    [TMUX(1)](TMUX.html)
-
-
 ## 📑 Table of Contents
 
 - [Name](#name)
@@ -58,130 +55,59 @@ tmux   [-2CDlNuVv]   [-c  shell-command]  [-f  file]  [-L  socket-name]
 
 ## Description {#description}
 
+tmux is a terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.
+
+When tmux is started, it creates a new session with a single window and displays it on screen. A status line at the bottom of the screen shows information on the current session and is used to enter interactive commands.
+
+A session is a single collection of pseudo terminals under the management of tmux. Each session has one or more windows linked to it. A window occupies the entire screen and may be split into rectangular panes, each of which is a separate pseudo terminal (the pty(4) manual page documents the technical details of pseudo terminals). Any number of tmux instances may connect to the same session, and any number of windows may be present in the same session. Once all sessions are killed, tmux exits.
+
+Each session is persistent and will survive accidental disconnection (such as ssh(1) connection timeout) or intentional detaching (with the 'C-b d' key strokes). tmux may be reattached using:
+
 ```
-tmux is a terminal multiplexer: it enables a number of terminals to  be
-created,  accessed,  and  controlled from a single screen.  tmux may be
-detached from a screen and continue running  in  the  background,  then
-later reattached.
-
-When tmux is started, it creates a new session with a single window and
-displays it on screen.  A status line at the bottom of the screen shows
-information  on  the  current  session and is used to enter interactive
-commands.
-
-A session is a single collection of pseudo terminals under the  manage‐
-ment  of  tmux.   Each session has one or more windows linked to it.  A
-window occupies the entire screen and may  be  split  into  rectangular
-panes,  each  of which is a separate pseudo terminal (the pty(4) manual
-page documents the technical details of pseudo terminals).  Any  number
-of  tmux  instances  may connect to the same session, and any number of
-windows may be present in the same  session.   Once  all  sessions  are
-killed, tmux exits.
-
-Each  session  is  persistent and will survive accidental disconnection
-(such as ssh(1) connection timeout) or intentional detaching (with  the
-‘C-b d’ key strokes).  tmux may be reattached using:
-
 $ tmux attach
+```
 
-In  tmux, a session is displayed on screen by a client and all sessions
-are managed by a single server.  The server and each client  are  sepa‐
-rate processes which communicate through a socket in /tmp.
+In tmux, a session is displayed on screen by a client and all sessions are managed by a single server. The server and each client are separate processes which communicate through a socket in /tmp.
 
 The options are as follows:
 
--2            Force  tmux  to assume the terminal supports 256 colours.
-              This is equivalent to -T 256.
-```
+`-2` Force tmux to assume the terminal supports 256 colours. This is equivalent to -T 256.
 
 
-       **`-C            Start`** in control mode (see the “CONTROL  MODE”  section).
-                     Given twice (-CC) disables echo.
+`-C` Start in control mode (see the "CONTROL MODE" section). Given twice (-CC) disables echo.
 
-       **`-c shell-command`**
-                     Execute shell-command using the default shell.  If neces‐
-                     sary,  the  tmux  server  will be started to retrieve the
-                     default-shell option.  This option is  for  compatibility
-                     with sh(1) when tmux is used as a login shell.
+`-c shell-command` Execute shell-command using the default shell. If necessary, the tmux server will be started to retrieve the default-shell option. This option is for compatibility with sh(1) when tmux is used as a login shell.
 
-       **`-D            Do`**  not  start  the  tmux  server as a daemon.  This also
-                     turns the exit-empty option off.  With  -D,  command  may
-                     not be specified.
+`-D` Do not start the tmux server as a daemon. This also turns the exit-empty option off. With -D, command may not be specified.
 
-       **`-f file`**       Specify  an  alternative configuration file.  By default,
-                     tmux   loads   the   system   configuration   file   from
-                     /etc/tmux.conf, if present, then looks for a user config‐
-                     uration           file          at          ~/.tmux.conf,
-                     $XDG_CONFIG_HOME/tmux/tmux.conf or ~/.tmux.conf.
+`-f file` Specify an alternative configuration file. By default, tmux loads the system configuration file from /etc/tmux.conf, if present, then looks for a user configuration file at ~/.tmux.conf, $XDG_CONFIG_HOME/tmux/tmux.conf or ~/.tmux.conf.
 
-                     The configuration file is a set of  tmux  commands  which
-                     are  executed  in  sequence  when  the  server  is  first
-                     started.  tmux loads configuration files  once  when  the
-                     server  process has started.  The source-file command may
-                     be used to load a file later.
+The configuration file is a set of tmux commands which are executed in sequence when the server is first started. tmux loads configuration files once when the server process has started. The source-file command may be used to load a file later.
 
-                     tmux shows any error messages from commands in configura‐
-                     tion files in the first session created, and continues to
-                     process the rest of the configuration file.
+tmux shows any error messages from commands in configuration files in the first session created, and continues to process the rest of the configuration file.
 
-       **`-L socket-name`**
-                     tmux stores  the  server  socket  in  a  directory  under
-                     TMUX_TMPDIR  or  /tmp if it is unset.  The default socket
-                     is named default.  This option allows a different  socket
-                     name  to  be specified, allowing several independent tmux
-                     servers to be run.  Unlike -S a full path is  not  neces‐
-                     sary: the sockets are all created in a directory tmux-UID
-                     under the directory given by TMUX_TMPDIR or in /tmp.  The
-                     tmux-UID  directory  is  created  by tmux and must not be
-                     world readable, writable or executable.
+`-L socket-name` tmux stores the server socket in a directory under TMUX_TMPDIR or /tmp if it is unset. The default socket is named default. This option allows a different socket name to be specified, allowing several independent tmux servers to be run. Unlike -S a full path is not necessary: the sockets are all created in a directory tmux-UID under the directory given by TMUX_TMPDIR or in /tmp. The tmux-UID directory is created by tmux and must not be world readable, writable or executable.
 
-                     If the socket is accidentally removed, the SIGUSR1 signal
-                     may be sent to the tmux server  process  to  recreate  it
-                     (note  that  this will fail if any parent directories are
-                     missing).
+If the socket is accidentally removed, the SIGUSR1 signal may be sent to the tmux server process to recreate it (note that this will fail if any parent directories are missing).
 
-       **`-l            Behave`** as a login shell.  This flag currently has no  ef‐
-                     fect  and is for compatibility with other shells when us‐
-                     ing tmux as a login shell.
+`-l` Behave as a login shell. This flag currently has no effect and is for compatibility with other shells when using tmux as a login shell.
 
-       **`-N            Do`** not start the server even if the  command  would  nor‐
-                     mally do so (for example new-session or start-server).
+`-N` Do not start the server even if the command would normally do so (for example new-session or start-server).
 
-       **`-S socket-path`**
-                     Specify a full alternative path to the server socket.  If
-                     **`-S is`** specified, the default socket directory is not used
-```
-and any -L flag is ignored.
-```
+`-S socket-path` Specify a full alternative path to the server socket. If -S is specified, the default socket directory is not used and any -L flag is ignored.
 
 
-       **`-T features`**   Set  terminal  features for the client.  This is a comma-
-                     separated list of features.   See  the  terminal-features
-                     option.
+`-T features` Set terminal features for the client. This is a comma-separated list of features. See the terminal-features option.
 
-       **`-u            Write`**  UTF-8 output to the terminal even if the first en‐
-                     vironment variable of LC_ALL, LC_CTYPE, or LANG  that  is
-                     set does not contain "UTF-8" or "UTF8".
+`-u` Write UTF-8 output to the terminal even if the first environment variable of LC_ALL, LC_CTYPE, or LANG that is set does not contain "UTF-8" or "UTF8".
 
-       **`-V            Report`** the tmux version.
+`-V` Report the tmux version.
 
-       **`-v            Request`** verbose logging.  Log messages will be saved into
-                     tmux-client-PID.log  and tmux-server-PID.log files in the
-                     current directory, where PID is the PID of the server  or
-                     client  process.  If -v is specified twice, an additional
-                     tmux-out-PID.log file is generated with a copy of  every‐
-                     thing tmux writes to the terminal.
+`-v` Request verbose logging. Log messages will be saved into tmux-client-PID.log and tmux-server-PID.log files in the current directory, where PID is the PID of the server or client process. If -v is specified twice, an additional tmux-out-PID.log file is generated with a copy of everything tmux writes to the terminal.
 
-                     The SIGUSR2 signal may be sent to the tmux server process
-                     to  toggle  logging  between  on (as if -v was given) and
-                     off.
+The SIGUSR2 signal may be sent to the tmux server process to toggle logging between on (as if -v was given) and off.
 
-```
-command [flags]
-              This specifies one of a set of commands used  to  control
-              tmux, as described in the following sections.  If no com‐
-              mands are specified, the new-session command is assumed.
-```
+`command [flags]` This specifies one of a set of commands used to control tmux, as described in the following sections. If no commands are specified, the new-session command is assumed.
 
 
 
@@ -268,62 +194,37 @@ Key bindings may be changed with the bind-key and unbind-key commands.
 
 ### Command Parsing And Execution {#command-parsing-and-execution}
 
-```
-tmux  supports  a large number of commands which can be used to control
-its behaviour.  Each command is named and can accept zero or more flags
-and arguments.  They may be bound to a key with the bind-key command or
-run from the shell prompt, a shell script, a configuration file or  the
-command  prompt.  For example, the same set-option command run from the
-shell prompt, from ~/.tmux.conf and bound to a key may look like:
+tmux supports a large number of commands which can be used to control its behaviour. Each command is named and can accept zero or more flags and arguments. They may be bound to a key with the bind-key command or run from the shell prompt, a shell script, a configuration file or the command prompt. For example, the same set-option command run from the shell prompt, from ~/.tmux.conf and bound to a key may look like:
 
+```
 $ tmux set-option -g status-style bg=cyan
 
       set-option -g status-style bg=cyan
 
       bind-key C set-option -g status-style bg=cyan
-
-Here,  the  command  name  is  ‘set-option’,  ‘-g’  is   a   flag   and
-‘status-style’ and ‘bg=cyan’ are arguments.
-
-tmux  distinguishes between command parsing and execution.  In order to
-execute a command, tmux needs it to be split up into its name and argu‐
-ments.  This is command parsing.  If a command is run from  the  shell,
-the  shell  parses  it;  from inside tmux or from a configuration file,
-tmux does.  Examples of when tmux parses commands are:
 ```
 
+Here, the command name is 'set-option', '-g' is a flag and 'status-style' and 'bg=cyan' are arguments.
 
-             -   in a configuration file;
+tmux distinguishes between command parsing and execution. In order to execute a command, tmux needs it to be split up into its name and arguments. This is command parsing. If a command is run from the shell, the shell parses it; from inside tmux or from a configuration file, tmux does. Examples of when tmux parses commands are:
 
-             -   typed at the command prompt (see command-prompt);
 
-             -   given to bind-key;
+- in a configuration file;
+- typed at the command prompt (see command-prompt);
+- given to bind-key;
+- passed as arguments to if-shell or confirm-before.
 
-             -   passed as arguments to if-shell or confirm-before.
+To execute commands, each client has a 'command queue'. A global command queue not attached to any client is used on startup for configuration files like ~/.tmux.conf. Parsed commands added to the queue are executed in order. Some commands, like if-shell and confirm-before, parse their argument to create a new command which is inserted immediately after themselves. This means that arguments can be parsed twice or more - once when the parent command (such as if-shell) is parsed and again when it parses and executes its command. Commands like if-shell, run-shell and display-panes stop execution of subsequent commands on the queue until something happens - if-shell and run-shell until a shell command finishes and display-panes until a key is pressed. For example, the following commands:
 
 ```
-To execute commands, each client has a ‘command queue’.  A global  com‐
-mand queue not attached to any client is used on startup for configura‐
-tion  files  like ~/.tmux.conf.  Parsed commands added to the queue are
-executed in order.  Some commands, like  if-shell  and  confirm-before,
-parse  their argument to create a new command which is inserted immedi‐
-ately after themselves.  This means that arguments can be parsed  twice
-or more - once when the parent command (such as if-shell) is parsed and
-again when it parses and executes its command.  Commands like if-shell,
-run-shell  and  display-panes  stop execution of subsequent commands on
-the queue until something happens -  if-shell  and  run-shell  until  a
-shell  command  finishes and display-panes until a key is pressed.  For
-example, the following commands:
-
       new-session; new-window
       if-shell "true" "split-window"
       kill-session
-
-Will execute  new-session,  new-window,  if-shell,  the  shell  command
-true(1), split-window and kill-session in that order.
-
-The “COMMANDS” section lists the tmux commands and their arguments.
 ```
+
+Will execute new-session, new-window, if-shell, the shell command true(1), split-window and kill-session in that order.
+
+The "COMMANDS" section lists the tmux commands and their arguments.
 
 
 
@@ -721,7 +622,7 @@ attach-session   [-dErx]   [-c   working-directory]   [-f   flags]  [-t
 ```
 
 
-               **`-c  will`**  set  the session working directory (used for new win‐
+               `-c  will`  set  the session working directory (used for new win‐
 ```
 dows) to working-directory.
 
@@ -825,7 +726,7 @@ new-session [-AdDEPX] [-c start-directory] [-e environment] [-f  flags]
                3.      the  name  for a new group containing only the new ses‐
                        sion.
 
-               **`-n and`** shell-command are invalid if -t is used.
+               `-n and` shell-command are invalid if -t is used.
 
 ```
 The -P option prints information about the new session after it
@@ -860,7 +761,7 @@ refresh-client  [-cDLRSU]  [-A  pane:state]  [-B  name:what:format] [-C
 ```
 
 
-               **`-C sets`** the width and height of a control mode client or  of  a
+               `-C sets` the width and height of a control mode client or  of  a
 ```
 window  for  a  control  mode  client,  size  must  be  one  of
 ‘widthxheight’ or ‘window ID:widthxheight’, for example ‘80x24’
@@ -876,7 +777,7 @@ may be given multiple times for different panes.
 ```
 
 
-               **`-B sets`** a subscription to a format for a control  mode  client.
+               `-B sets` a subscription to a format for a control  mode  client.
 ```
 The  argument  is  split  into three items by colons: name is a
 name for the subscription; what is a type of item to  subscribe
@@ -891,13 +792,13 @@ dows in the attached session.
 ```
 
 
-               **`-f  sets`**  a  comma-separated  list   of   client   flags,   see
+               `-f  sets`  a  comma-separated  list   of   client   flags,   see
 ```
 attach-session.
 ```
 
 
-               **`-l  requests`**  the  clipboard from the client using the xterm(1)
+               `-l  requests`  the  clipboard from the client using the xterm(1)
 ```
 escape sequence.  If target-pane is  given,  the  clipboard  is
 sent  (in  encoded form), otherwise it is stored in a new paste
@@ -905,7 +806,7 @@ buffer.
 ```
 
 
-               **`-L`**, -R, -U and -D move the visible portion of the window  left,
+               `-L`, -R, -U and -D move the visible portion of the window  left,
 ```
 right,  up  or down by adjustment, if the window is larger than
 the client.  -c resets so that the position follows the cursor.
@@ -925,14 +826,14 @@ server-access [-adlrw] [user]
 ```
 
 
-               **`-a  and`**  -d are used to give or revoke access for the specified
+               `-a  and`  -d are used to give or revoke access for the specified
 ```
 user.  If the user is already  attached,  the  -d  flag  causes
 their clients to be detached.
 ```
 
 
-               **`-r  and`**  -w  change  the  permissions  for user: -r makes their
+               `-r  and`  -w  change  the  permissions  for user: -r makes their
 ```
 clients read-only and -w writable.   -l  lists  current  access
 permissions.
@@ -994,7 +895,7 @@ switch-client [-ElnprZ]  [-c  target-client]  [-t  target-session]  [-T
 ```
 
 
-               **`-T sets`** the client's key table; the next key  from  the  client
+               `-T sets` the client's key table; the next key  from  the  client
 ```
 will  be  interpreted from key-table.  This may be used to con‐
 figure multiple prefix keys, or to bind commands  to  sequences
@@ -1241,7 +1142,7 @@ copy-mode [-eHMqu] [-s src-pane] [-t target-pane]
 ```
 
 
-               **`-e  specifies`**  that  scrolling to the bottom of the history (to
+               `-e  specifies`  that  scrolling to the bottom of the history (to
 ```
 the visible screen) should exit copy mode.  While in copy mode,
 pressing a key other than those used for scrolling will disable
@@ -1327,7 +1228,7 @@ capture-pane   [-aAepPqCJN]   [-b   buffer-name]   [-E   end-line]  [-S
 ```
 
 
-               **`-S and`** -E specify the starting and ending line numbers, zero is
+               `-S and` -E specify the starting and ending line numbers, zero is
 ```
 the first line of the visible pane  and  negative  numbers  are
 lines  in  the  history.  ‘-’ to -S is the start of the history
@@ -1373,7 +1274,7 @@ choose-client  [-NrZ]  [-F  format]  [-f  filter]  [-K  key-format] [-O
 ```
 
 
-               **`-O specifies`** the initial sort field:  one  of  ‘name’,  ‘size’,
+               `-O specifies` the initial sort field:  one  of  ‘name’,  ‘size’,
 ```
 ‘creation’  (time), or ‘activity’ (time).  -r reverses the sort
 order.  -f specifies an initial filter: the filter is a  format
@@ -1432,7 +1333,7 @@ choose-tree  [-GNrswZ]  [-F  format]  [-f  filter]  [-K key-format] [-O
 ```
 
 
-               **`-O specifies`** the initial sort field: one of ‘index’, ‘name’, or
+               `-O specifies` the initial sort field: one of ‘index’, ‘name’, or
 ```
 ‘time’ (activity).  -r reverses the sort order.   -f  specifies
 an  initial filter: the filter is a format - if it evaluates to
@@ -1483,7 +1384,7 @@ customize-mode  [-NZ]  [-F  format]  [-f   filter]   [-t   target-pane]
 ```
 
 
-               **`-f specifies`** an initial filter: the filter is a format - if  it
+               `-f specifies` an initial filter: the filter is a format - if  it
 ```
 evaluates to zero, the item in the list is not shown, otherwise
 it  is  shown.   If a filter would lead to an empty list, it is
@@ -1618,7 +1519,7 @@ new-window  [-abdkPS] [-c start-directory] [-e environment] [-F format]
 ```
 
 
-               **`-e takes`** the form  ‘VARIABLE=value’  and  sets  an  environment
+               `-e takes` the form  ‘VARIABLE=value’  and  sets  an  environment
 ```
 variable for the newly created window; it may be specified mul‐
 tiple times.
@@ -1659,7 +1560,7 @@ pipe-pane [-IOo] [-t target-pane] [shell-command]
 ```
 
 
-               **`-I and`** -O specify which of the shell-command output streams are
+               `-I and` -O specify which of the shell-command output streams are
 ```
 connected to the pane: with -I stdout is connected (so anything
 shell-command prints is written to  the  pane  as  if  it  were
@@ -1703,13 +1604,13 @@ resize-pane   [-DLMRTUZ]   [-t  target-pane]  [-x  width]  [-y  height]
 ```
 
 
-               **`-M  begins`**  mouse  resizing (only valid if bound to a mouse key
+               `-M  begins`  mouse  resizing (only valid if bound to a mouse key
 ```
 binding, see “MOUSE SUPPORT”).
 ```
 
 
-               **`-T trims`** all lines below the current cursor position and  moves
+               `-T trims` all lines below the current cursor position and  moves
 ```
 lines out of the history to replace them.
 
@@ -1774,7 +1675,7 @@ select-pane [-DdeLlMmRUZ] [-T title] [-t target-pane]
 ```
 
 
-               **`-m  and`** -M are used to set and clear the marked pane.  There is
+               `-m  and` -M are used to set and clear the marked pane.  There is
 ```
 one marked pane at a time, setting a new marked pane clears the
 last.  The  marked  pane  is  the  default  target  for  -s  to
@@ -1922,13 +1823,13 @@ send-keys  [-FHKlMRX]  [-c   target-client]   [-N   repeat-count]   [-t
 ```
 
 
-               **`-M passes`** through a mouse event (only valid if bound to a mouse
+               `-M passes` through a mouse event (only valid if bound to a mouse
 ```
 key binding, see “MOUSE SUPPORT”).
 ```
 
 
-               **`-X is`** used to send a command into copy mode - see the  “WINDOWS
+               `-X is` used to send a command into copy mode - see the  “WINDOWS
 ```
 AND PANES” section.  -N specifies a repeat count and -F expands
 formats in arguments where appropriate.
@@ -2005,7 +1906,7 @@ set-option [-aFgopqsuUw] [-t target-pane] option value
 ```
 
 
-               **`-F expands`** formats in the option value.  The -u flag unsets  an
+               `-F expands` formats in the option value.  The -u flag unsets  an
 ```
 option,  so  a  session inherits the option from the global op‐
 tions (or with -g, restores a global option  to  the  default).
@@ -3527,7 +3428,7 @@ command-prompt [-1bFikN] [-I inputs] [-p  prompts]  [-t  target-client]
 ```
 
 
-               **`-T  tells`**  tmux the prompt type.  This affects what completions
+               `-T  tells`  tmux the prompt type.  This affects what completions
 ```
 are  offered  when  Tab  is  pressed.   Available  types   are:
 ‘command’, ‘search’, ‘target’ and ‘window-target’.
@@ -3591,29 +3492,29 @@ display-menu   [-O]   [-b   border-lines]   [-c   target-client]    [-C
 ```
 
 
-               **`-b sets`** the type of characters used for drawing  menu  borders.
+               `-b sets` the type of characters used for drawing  menu  borders.
 ```
 See popup-border-lines for possible values for border-lines.
 ```
 
 
-               **`-H sets`** the style for the selected menu item (see “STYLES”).
+               `-H sets` the style for the selected menu item (see “STYLES”).
 
-               **`-s  sets`**  the  style for the menu and -S sets the style for the
+               `-s  sets`  the  style for the menu and -S sets the style for the
 ```
 menu border (see “STYLES”).
 ```
 
 
-               **`-T is`** a format for the menu title (see “FORMATS”).
+               `-T is` a format for the menu title (see “FORMATS”).
 
-               **`-C sets`** the menu item selected by default, if the menu  is  not
+               `-C sets` the menu item selected by default, if the menu  is  not
 ```
 bound to a mouse key binding.
 ```
 
 
-               **`-x  and`** -y give the position of the menu.  Both may be a row or
+               `-x  and` -y give the position of the menu.  Both may be a row or
 ```
 column number, or one of the following special values:
 
@@ -3689,13 +3590,13 @@ display-message   [-aIlNpv]   [-c   target-client]   [-d   delay]   [-t
 ```
 
 
-               **`-v  prints`** verbose logging as the format is parsed and -a lists
+               `-v  prints` verbose logging as the format is parsed and -a lists
 ```
 the format variables and their values.
 ```
 
 
-               **`-I forwards`** any input read from stdin to the empty  pane  given
+               `-I forwards` any input read from stdin to the empty  pane  given
 ```
 by target-pane.
 
@@ -3713,14 +3614,14 @@ display-popup   [-BCE]   [-b   border-lines]   [-c  target-client]  [-d
 ```
 
 
-               **`-E closes`** the popup  automatically  when  shell-command  exits.
+               `-E closes` the popup  automatically  when  shell-command  exits.
 ```
 Two  -E closes the popup only if shell-command exited with suc‐
 cess.
 ```
 
 
-               **`-x and`** -y give the position of the popup, they  have  the  same
+               `-x and` -y give the position of the popup, they  have  the  same
 ```
 meaning  as  for  the display-menu command.  -w and -h give the
 width and height - both may be a percentage (followed by  ‘%’).
@@ -3728,28 +3629,28 @@ If omitted, half of the terminal size is used.
 ```
 
 
-               **`-B does`** not surround the popup by a border.
+               `-B does` not surround the popup by a border.
 
-               **`-b  sets`** the type of characters used for drawing popup borders.
+               `-b  sets` the type of characters used for drawing popup borders.
 ```
 When  -B  is  specified,  the  -b  option  is   ignored.    See
 popup-border-lines for possible values for border-lines.
 ```
 
 
-               **`-s  sets`**  the style for the popup and -S sets the style for the
+               `-s  sets`  the style for the popup and -S sets the style for the
 ```
 popup border (see “STYLES”).
 ```
 
 
-               **`-e takes`** the form  ‘VARIABLE=value’  and  sets  an  environment
+               `-e takes` the form  ‘VARIABLE=value’  and  sets  an  environment
 ```
 variable for the popup; it may be specified multiple times.
 ```
 
 
-               **`-T is`** a format for the popup title (see “FORMATS”).
+               `-T is` a format for the popup title (see “FORMATS”).
 
 ```
 The -C flag closes any popup on the client.
@@ -3824,7 +3725,7 @@ choose-buffer [-NZr]  [-F  format]  [-f  filter]  [-K  key-format]  [-O
 ```
 
 
-               **`-O  specifies`** the initial sort field: one of ‘time’ (creation),
+               `-O  specifies` the initial sort field: one of ‘time’ (creation),
 ```
 ‘name’ or ‘size’.  -r reverses the sort order.  -f specifies an
 initial filter: the filter is a format -  if  it  evaluates  to
